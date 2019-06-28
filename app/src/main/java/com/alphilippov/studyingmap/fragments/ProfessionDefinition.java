@@ -86,8 +86,7 @@ public class ProfessionDefinition extends Fragment {
         mCountQue = binding.countQuestionTwoPart;
         Button mOnePartButton = binding.OnePartButton;
         Button mTwoPartButton = binding.TwoPartButton;
-
-
+        
 
         mOnePartButton.setOnClickListener(view -> {
 
