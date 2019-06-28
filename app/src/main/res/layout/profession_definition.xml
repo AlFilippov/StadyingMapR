@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+    <variable
+        name="ProfessionalDefinitionDB"
+        type="com.alphilippov.studyingmap.databind.ProfessionBinding"
+        />
+    </data>
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <Button
+
+            android:id="@+id/OnePartButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/countQuestionOnePart"
+            android:layout_toLeftOf="@id/countQuestionOnePart"
+            android:text="@{ProfessionalDefinitionDB.buttonOnePart}" />
+        <Button
+            android:id="@+id/TwoPartButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/countQuestionOnePart"
+           android:layout_toRightOf="@id/countQuestionFourPart"
+            android:text="@{ProfessionalDefinitionDB.buttonTwoPart}" />
+        <TextView
+    android:id="@+id/oneOutOfTwo"
+    android:layout_width="wrap_content"
+    android:layout_height="31dp"
+    android:layout_centerInParent="true"
+    android:text="@{ProfessionalDefinitionDB.textChoiceQuestion}"
+    />
+
+    <TextView
+        android:id="@+id/countQuestionOnePart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/oneOutOfTwo"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:layout_alignLeft="@id/oneOutOfTwo"
+        android:text="@{ProfessionalDefinitionDB.textChangeQuestionOnePart}" />
+
+    <TextView
+        android:id="@+id/countQuestionTwoPart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/oneOutOfTwo"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="15dp"
+        android:layout_toRightOf="@+id/countQuestionOnePart"
+        android:text="@{ProfessionalDefinitionDB.changeQuestionTwoPart}" />
+
+    <TextView
+        android:id="@+id/countQuestionThreePart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/oneOutOfTwo"
+        android:layout_centerInParent="true"
+        android:layout_toRightOf="@+id/countQuestionTwoPart"
+        android:text="@{ProfessionalDefinitionDB.changeQuestionThreePart}" />
+
+    <TextView
+        android:id="@+id/countQuestionFourPart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/oneOutOfTwo"
+        android:layout_centerInParent="true"
+        android:layout_alignRight="@id/oneOutOfTwo"
+        android:text="@{ProfessionalDefinitionDB.changeQuestionFourPart}"
+
+
+        />
+
+
+</RelativeLayout>
+</layout>

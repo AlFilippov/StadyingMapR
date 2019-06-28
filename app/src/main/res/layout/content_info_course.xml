@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/info_person"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/mImageCourse"
+            android:layout_width="70dp"
+            android:layout_height="61dp"
+            android:layout_marginLeft="3sp"
+            android:layout_marginTop="10dp"
+            android:src="@android:drawable/dialog_frame" />
+
+        <TextView
+            android:id="@+id/mNameCourse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/mImageCourse"
+            android:layout_marginLeft="10sp"
+            android:text="@string/mNameCourse" />
+        <TextView
+            android:id="@+id/mAuthorCourse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mNameCourse"
+            android:layout_toRightOf="@id/mImageCourse"
+            android:layout_marginLeft="10sp"
+            android:textSize="12sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="@string/mAuthorCourse" />
+
+        <RatingBar
+            android:id="@+id/mRatingCourse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mAuthorCourse"
+            android:layout_toRightOf="@id/mImageCourse"
+            android:layout_marginTop="3sp"
+            android:layout_marginLeft="10sp"
+            style="?android:attr/ratingBarStyleSmall"/>
+
+        <TextView
+            android:id="@+id/mAverageRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mAuthorCourse"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="1sp"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/mRatingCourse"
+            android:text="@string/mAverageRating" />
+
+        <TextView
+            android:id="@+id/mQuantityFeedBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mAuthorCourse"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="1sp"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/mAverageRating"
+            android:text="@string/mQuantityFeedBack" />
+
+        <TextView
+            android:id="@+id/mPriceCourse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mRatingCourse"
+            android:text="@string/mQuantityFeedBack"
+            android:layout_toRightOf="@id/mImageCourse"
+            android:layout_marginLeft="10sp"/>
+
+        <TextView
+            android:id="@+id/mPriceWithoutDiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/mPriceCourse"
+            android:text="@string/mQuantityFeedBack"
+            android:layout_below="@+id/mRatingCourse"
+            android:layout_marginLeft="10sp"/>
+
+
+    </RelativeLayout>
+    <View
+        android:id="@+id/delimeter_view"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/colorPrimary"/>
+</LinearLayout>
