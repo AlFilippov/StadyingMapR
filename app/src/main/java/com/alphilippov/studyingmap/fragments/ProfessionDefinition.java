@@ -64,7 +64,7 @@ public class ProfessionDefinition extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        initializeObjectProfession();
         loadDataAboutProfession(0);
 
     }
@@ -86,7 +86,7 @@ public class ProfessionDefinition extends Fragment {
         mCountQue = binding.countQuestionTwoPart;
         Button mOnePartButton = binding.OnePartButton;
         Button mTwoPartButton = binding.TwoPartButton;
-        
+
 
         mOnePartButton.setOnClickListener(view -> {
 
@@ -126,7 +126,7 @@ public class ProfessionDefinition extends Fragment {
         configurationRetrofit().getAllProfession(index).enqueue(new Callback<GetProfessionDTO>() {
             @Override
             public void onResponse(Call<GetProfessionDTO> call, Response<GetProfessionDTO> response) {
-           professionDataLists.addAll(response.body().getProfessionDataLists());
+                professionDataLists.addAll(response.body().getProfessionDataLists());
             }
 
             @Override
@@ -182,73 +182,73 @@ public class ProfessionDefinition extends Fragment {
         return mRetrofit.create(RestService.class);
     }
 
-    /*
-        private void initializeObjectProfession() {
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(1, 0, "Mechanic"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(2, 1, "Information security specialist"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(4, 2, "Call center operator"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(1, 3, "Driver"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(2, 4, "Design Engineer"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(4, 5, "Air traffic controller"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(1, 6, "Veterinarian"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(2, 7, "Game developer "));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(4, 8, "Laboratory assistant"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(1, 9, "Agronomist"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(2, 10, "Breeder"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(4, 11, "Marketer"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(1, 12, "Masseur"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(2, 13, "Teacher"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(4, 14, "Facility manager"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(1, 15, "Waiter"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(2, 16, "Psychologist"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(4, 17, "Insurance agent"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(1, 18, "Jeweler"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(2, 19, "Art Critic"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(4, 20, "Editor"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(1, 21, "Interior designer"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(2, 22, "Software tester"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(4, 23, "Copywriter"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(2, 24, "System Administrator"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(1, 25, "Carpenter"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(4, 26, "Corrector"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(1, 27, "Typewriter"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(2, 28, "Programmer"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(4, 29, "Accountant"));
-            ProfessionOnePartDTO.add(new ProfessionalDefinition(7, 29, "Accountant"));
 
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(3, 0, "Physiotherapist"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(5, 1, "Logistics specialist"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(6, 2, "Cameraman"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(3, 3, "Cashier"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(5, 4, "Auto Sales Manager"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(6, 5, "Web designer"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(3, 6, "Ecologist"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(5, 7, "Farmer"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(6, 8, "SEO specialist "));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(3, 9, "Sanitary doctor"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(5, 10, "Agricultural Product Provider"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(6, 11, "Landscape designer"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(3, 12, "Tutor"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(5, 13, "Entrepreneur"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(6, 14, "Artist-animator"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(3, 15, "Doctor"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(5, 16, "Trading agent"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(6, 17, "Choreographer"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(3, 18, "Journalist"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(5, 19, "Producer"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(6, 20, "Musician"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(3, 21, "Guide"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(5, 22, "Art Director"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(6, 23, "Theater and film actor"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(3, 24, "Guide-translator"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(5, 25, "Crisis Manager"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(6, 26, "Art editor"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(3, 27, "Legal Counsel"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(5, 28, "Broker"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(6, 29, "Literary translator"));
-            ProfessionTwoPartDTO.add(new ProfessionalDefinition(7, 29, "Literary translator"));
-        }
-    */
+    private void initializeObjectProfession() {
+        ProfessionOnePart.add(new ProfessionalDefinition(1, 0, "Mechanic"));
+        ProfessionOnePart.add(new ProfessionalDefinition(2, 1, "Information security specialist"));
+        ProfessionOnePart.add(new ProfessionalDefinition(4, 2, "Call center operator"));
+        ProfessionOnePart.add(new ProfessionalDefinition(1, 3, "Driver"));
+        ProfessionOnePart.add(new ProfessionalDefinition(2, 4, "Design Engineer"));
+        ProfessionOnePart.add(new ProfessionalDefinition(4, 5, "Air traffic controller"));
+        ProfessionOnePart.add(new ProfessionalDefinition(1, 6, "Veterinarian"));
+        ProfessionOnePart.add(new ProfessionalDefinition(2, 7, "Game developer "));
+        ProfessionOnePart.add(new ProfessionalDefinition(4, 8, "Laboratory assistant"));
+        ProfessionOnePart.add(new ProfessionalDefinition(1, 9, "Agronomist"));
+        ProfessionOnePart.add(new ProfessionalDefinition(2, 10, "Breeder"));
+        ProfessionOnePart.add(new ProfessionalDefinition(4, 11, "Marketer"));
+        ProfessionOnePart.add(new ProfessionalDefinition(1, 12, "Masseur"));
+        ProfessionOnePart.add(new ProfessionalDefinition(2, 13, "Teacher"));
+        ProfessionOnePart.add(new ProfessionalDefinition(4, 14, "Facility manager"));
+        ProfessionOnePart.add(new ProfessionalDefinition(1, 15, "Waiter"));
+        ProfessionOnePart.add(new ProfessionalDefinition(2, 16, "Psychologist"));
+        ProfessionOnePart.add(new ProfessionalDefinition(4, 17, "Insurance agent"));
+        ProfessionOnePart.add(new ProfessionalDefinition(1, 18, "Jeweler"));
+        ProfessionOnePart.add(new ProfessionalDefinition(2, 19, "Art Critic"));
+        ProfessionOnePart.add(new ProfessionalDefinition(4, 20, "Editor"));
+        ProfessionOnePart.add(new ProfessionalDefinition(1, 21, "Interior designer"));
+        ProfessionOnePart.add(new ProfessionalDefinition(2, 22, "Software tester"));
+        ProfessionOnePart.add(new ProfessionalDefinition(4, 23, "Copywriter"));
+        ProfessionOnePart.add(new ProfessionalDefinition(2, 24, "System Administrator"));
+        ProfessionOnePart.add(new ProfessionalDefinition(1, 25, "Carpenter"));
+        ProfessionOnePart.add(new ProfessionalDefinition(4, 26, "Corrector"));
+        ProfessionOnePart.add(new ProfessionalDefinition(1, 27, "Typewriter"));
+        ProfessionOnePart.add(new ProfessionalDefinition(2, 28, "Programmer"));
+        ProfessionOnePart.add(new ProfessionalDefinition(4, 29, "Accountant"));
+        ProfessionOnePart.add(new ProfessionalDefinition(7, 29, "Accountant"));
+
+        ProfessionTwoPart.add(new ProfessionalDefinition(3, 0, "Physiotherapist"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(5, 1, "Logistics specialist"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(6, 2, "Cameraman"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(3, 3, "Cashier"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(5, 4, "Auto Sales Manager"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(6, 5, "Web designer"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(3, 6, "Ecologist"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(5, 7, "Farmer"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(6, 8, "SEO specialist "));
+        ProfessionTwoPart.add(new ProfessionalDefinition(3, 9, "Sanitary doctor"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(5, 10, "Agricultural Product Provider"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(6, 11, "Landscape designer"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(3, 12, "Tutor"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(5, 13, "Entrepreneur"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(6, 14, "Artist-animator"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(3, 15, "Doctor"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(5, 16, "Trading agent"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(6, 17, "Choreographer"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(3, 18, "Journalist"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(5, 19, "Producer"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(6, 20, "Musician"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(3, 21, "Guide"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(5, 22, "Art Director"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(6, 23, "Theater and film actor"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(3, 24, "Guide-translator"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(5, 25, "Crisis Manager"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(6, 26, "Art editor"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(3, 27, "Legal Counsel"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(5, 28, "Broker"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(6, 29, "Literary translator"));
+        ProfessionTwoPart.add(new ProfessionalDefinition(7, 29, "Literary translator"));
+    }
+
     private String setItemListOnePart(List<ProfessionalDefinition> professionOnePart, int questionCount) {
 
         return professionOnePart.get(questionCount).getProfession();

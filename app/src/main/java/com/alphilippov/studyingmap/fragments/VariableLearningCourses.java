@@ -13,14 +13,10 @@ import android.widget.TextView;
 
 import com.alphilippov.studyingmap.R;
 
-public class AskMe extends Fragment implements Button.OnClickListener {
+public class VariableLearningCourses extends Fragment implements Button.OnClickListener {
 
     private static final String YES_DECIDED = "ydecided";
     private static final String WANT_DEFENITION = "wdecided";
-    public static String mKeyTransfer = " keyTransfer";
-    private static String mTransfer;
-
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
