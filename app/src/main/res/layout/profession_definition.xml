@@ -2,81 +2,127 @@
 <layout
 
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
-    <variable
-        name="ProfessionalDefinitionDB"
-        type="com.alphilippov.studyingmap.databind.ProfessionBinding"
-        />
+
+        <variable
+            name="ProfessionalDefinitionDB"
+            type="com.alphilippov.studyingmap.databind.ProfessionBinding" />
     </data>
+
     <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <Button
 
-            android:id="@+id/OnePartButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/countQuestionOnePart"
-            android:layout_toLeftOf="@id/countQuestionOnePart"
-            android:text="@{ProfessionalDefinitionDB.buttonOnePart}" />
-        <Button
-            android:id="@+id/TwoPartButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/countQuestionOnePart"
-           android:layout_toRightOf="@id/countQuestionFourPart"
-            android:text="@{ProfessionalDefinitionDB.buttonTwoPart}" />
         <TextView
-    android:id="@+id/oneOutOfTwo"
-    android:layout_width="wrap_content"
-    android:layout_height="31dp"
-    android:layout_centerInParent="true"
-    android:text="@{ProfessionalDefinitionDB.textChoiceQuestion}"
-    />
+            android:id="@+id/oneOutOfTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="31dp"
+            android:layout_centerInParent="true"
+            android:text="@{ProfessionalDefinitionDB.textChoiceQuestion}"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            tools:text="Choose one of the two" />
 
-    <TextView
-        android:id="@+id/countQuestionOnePart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/oneOutOfTwo"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="5dp"
-        android:layout_alignLeft="@id/oneOutOfTwo"
-        android:text="@{ProfessionalDefinitionDB.textChangeQuestionOnePart}" />
+        <LinearLayout
+            android:id="@+id/quantity_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/oneOutOfTwo"
+            android:layout_centerInParent="true">
 
-    <TextView
-        android:id="@+id/countQuestionTwoPart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/oneOutOfTwo"
-        android:layout_centerInParent="true"
-        android:layout_marginRight="15dp"
-        android:layout_toRightOf="@+id/countQuestionOnePart"
-        android:text="@{ProfessionalDefinitionDB.changeQuestionTwoPart}" />
+            <TextView
+                android:id="@+id/countQuestionOnePart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{ProfessionalDefinitionDB.textChangeQuestionOnePart}"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="italic"
+                tools:text="Question" />
 
-    <TextView
-        android:id="@+id/countQuestionThreePart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/oneOutOfTwo"
-        android:layout_centerInParent="true"
-        android:layout_toRightOf="@+id/countQuestionTwoPart"
-        android:text="@{ProfessionalDefinitionDB.changeQuestionThreePart}" />
+            <TextView
+                android:id="@+id/countQuestionTwoPart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@{ProfessionalDefinitionDB.changeQuestionTwoPart}"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="italic"
+                tools:text="1" />
 
-    <TextView
-        android:id="@+id/countQuestionFourPart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/oneOutOfTwo"
-        android:layout_centerInParent="true"
-        android:layout_alignRight="@id/oneOutOfTwo"
-        android:text="@{ProfessionalDefinitionDB.changeQuestionFourPart}"
+            <TextView
+                android:id="@+id/countQuestionThreePart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@{ProfessionalDefinitionDB.changeQuestionThreePart}"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="italic"
+                tools:text="of" />
 
+            <TextView
+                android:id="@+id/countQuestionFourPart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@{ProfessionalDefinitionDB.changeQuestionFourPart}"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="italic"
+                tools:text="30"
 
-        />
+                />
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/quantity_text"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            >
 
-</RelativeLayout>
+            <com.alphilippov.studyingmap.widget.FButton
+
+                android:id="@+id/OnePartButton"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:text="@{ProfessionalDefinitionDB.buttonOnePart}"
+                android:textAlignment="center"
+                fbutton:buttonColor="@color/fbutton_color_peter_river"
+                fbutton:cornerRadius="5dp"
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp" />
+
+            <com.alphilippov.studyingmap.widget.FButton
+                android:id="@+id/TwoPartButton"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="100dp"
+                android:textAlignment="center"
+                android:text="@{ProfessionalDefinitionDB.buttonTwoPart}"
+                fbutton:buttonColor="@color/fbutton_color_peter_river"
+                fbutton:cornerRadius="5dp"
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp" />
+        </LinearLayout>
+    </RelativeLayout>
 </layout>

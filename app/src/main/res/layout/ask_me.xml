@@ -1,41 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-
-        android:id="@+id/wdefinition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/askMe"
-        android:layout_marginTop="0dp"
-        android:layout_marginRight="-88dp"
-        android:layout_toLeftOf="@id/askMe"
-        android:text="@string/wdefinition"
-        tools:layout_editor_absoluteX="81dp"
-        tools:layout_editor_absoluteY="354dp" />
-
     <TextView
         android:id="@+id/askMe"
-        android:layout_width="244dp"
+        android:layout_width="wrap_content"
         android:layout_height="31dp"
         android:layout_centerInParent="true"
-
         android:text="@string/askMe"
-        tools:layout_editor_absoluteX="156dp"
-        tools:layout_editor_absoluteY="253dp" />
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:textColor="@color/black"/>
 
-    <Button
-        android:id="@+id/ydecided"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/askMe"
-        android:layout_marginLeft="-86dp"
-        android:layout_marginTop="1dp"
-        android:layout_toRightOf="@+id/askMe"
-        android:text="@string/ydecided"
-        tools:layout_editor_absoluteX="218dp"
-        tools:layout_editor_absoluteY="354dp" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp">
+
+        <com.alphilippov.studyingmap.widget.FButton
+
+            android:id="@+id/wdefinition"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:text="@string/wdefinition"
+            android:layout_marginStart="10dp"
+            android:textAllCaps="false"
+            fbutton:buttonColor="@color/fbutton_color_peter_river"
+            fbutton:cornerRadius="5dp"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="5dp"
+
+            />
+
+
+        <com.alphilippov.studyingmap.widget.FButton
+            android:id="@+id/ydecided"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:text="@string/ydecided"
+            android:textAllCaps="false"
+            fbutton:buttonColor="@color/fbutton_color_peter_river"
+            fbutton:cornerRadius="5dp"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="5dp" />
+    </LinearLayout>
 </RelativeLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,7 +11,11 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="@string/content_text_view_request"
-        android:textSize="15sp" />
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:textColor="@color/black" />
 
     <EditText
         android:id="@+id/content_edit_text_request"
@@ -18,13 +23,17 @@
         android:layout_height="50dp"
         android:layout_below="@id/content_text_view_request"
         android:layout_centerHorizontal="true"
-        android:inputType="text"
-        android:importantForAutofill="no" />
-    <Button
+        android:inputType="text" />
+
+    <com.alphilippov.studyingmap.widget.FButton
         android:id="@+id/content_button_request"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/content_edit_text_request"
         android:layout_centerHorizontal="true"
-        android:text="@string/content_button_request" />
+        android:text="@string/content_button_request"
+        fbutton:buttonColor="@color/fbutton_color_peter_river"
+        fbutton:cornerRadius="5dp"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp" />
 </RelativeLayout>
