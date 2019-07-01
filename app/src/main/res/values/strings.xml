@@ -22,6 +22,6 @@
     <string name="title_notifications">Тут нет ничего</string>
     <string name="content_text_view_request">What we will search ?</string>
     <string name="content_button_request">Search</string>
-    <string name="navigation_dashboard">Вовчику</string>
+    <string name="navigation_dashboard">Favorites</string>
 
 </resources>

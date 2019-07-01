@@ -1,7 +1,5 @@
 package com.alphilippov.studyingmap.databind;
 
-import com.alphilippov.studyingmap.fragments.ProfessionDefinition;
-
 public class ProfessionBinding {
     private String mTextChoiceQuestion;
     private String mTextChangeQuestionOnePart;

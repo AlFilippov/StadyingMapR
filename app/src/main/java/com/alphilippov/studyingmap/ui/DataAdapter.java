@@ -30,7 +30,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     @NonNull
     @Override
     public DataAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.content_info_course, viewGroup, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.content_info_course_list, viewGroup, false);
         return new ViewHolder(view);
     }
 
@@ -57,8 +57,6 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         TextView mNameCourse;
         TextView mAuthorCourse;
         RatingBar mRatingCourse;
-        TextView mAverageRating;
-        TextView mQuantityFeedBack;
         TextView mPriceCourse;
         TextView mPriceWithoutDiscount;
 
@@ -68,8 +66,6 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
             mNameCourse = view.findViewById(R.id.mNameCourse);
             mAuthorCourse = view.findViewById(R.id.mAuthorCourse);
             mRatingCourse = view.findViewById(R.id.mRatingCourse);
-            mAverageRating = view.findViewById(R.id.mAverageRating);
-            mQuantityFeedBack = view.findViewById(R.id.mQuantityFeedBack);
             mPriceCourse = view.findViewById(R.id.mPriceCourse);
             mPriceWithoutDiscount = view.findViewById(R.id.mPriceWithoutDiscount);
         }
