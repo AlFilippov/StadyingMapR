@@ -93,7 +93,7 @@ public class ProfessionDefinition extends Fragment {
             if (QuestionCount == 1) {
                 collectList(ProfessionOnePart, 0);
             }
-            //TODO:Реализовать загрузку данных
+
             collectList(ProfessionOnePart, QuestionCount);
             mOnePartButton.setText(setItemListOnePart(ProfessionOnePart, QuestionCount));
             mTwoPartButton.setText(setItemListTwoPart(ProfessionTwoPart, QuestionCount));
@@ -107,7 +107,6 @@ public class ProfessionDefinition extends Fragment {
             if (QuestionCount == 1) {
                 collectList(ProfessionTwoPart, 0);
             }
-            //TODO:Поставить подгрузку данных
 
             collectList(ProfessionTwoPart, QuestionCount);
             mOnePartButton.setText(setItemListOnePart(ProfessionOnePart, QuestionCount));
@@ -154,10 +153,6 @@ public class ProfessionDefinition extends Fragment {
 
     public void collectList(List<ProfessionalDefinition> onePart, int i) {
         ProfessionThreePart.add(onePart.get(i));
-        // Log.i(TAG, String.valueOf(ProfessionThreePart.size()));
-//        for (ProfessionalDefinition professionalDefinition : ProfessionThreePart) {
-//            System.out.println(professionalDefinition.getProfession());
-//        }
         if (getProfessionThreePart().size() >= ProfessionOnePart.size()) {
             collectInteresGroups();
             replaceFragment();

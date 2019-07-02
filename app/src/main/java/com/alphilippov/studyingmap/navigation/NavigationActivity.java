@@ -6,20 +6,17 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.annotation.NonNull;
-import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.alphilippov.studyingmap.R;
 import com.alphilippov.studyingmap.fragments.FormCoursesKeyWords;
 import com.alphilippov.studyingmap.fragments.ResultsAfterSearchKeyWords;
-import com.alphilippov.studyingmap.fragments.VariableLearningCourses;
+import com.alphilippov.studyingmap.fragments.VariantLearningCourses;
 import com.alphilippov.studyingmap.fragments.ProfessionDefinition;
 import com.alphilippov.studyingmap.fragments.SearchResultOfCourses;
 
 import java.util.HashMap;
 
-public class NavigationActivity extends AppCompatActivity implements VariableLearningCourses.OnChangedFragment, ProfessionDefinition.sentDataFragment, FormCoursesKeyWords.replaceFragment {
+public class NavigationActivity extends AppCompatActivity implements VariantLearningCourses.OnChangedFragment, ProfessionDefinition.sentDataFragment, FormCoursesKeyWords.replaceFragment {
     private static final String YES_DECIDED = "ydecided";
     private static final String WANT_DEFENITION = "wdecided";
     private static final String YES = "YES";
@@ -30,9 +27,10 @@ public class NavigationActivity extends AppCompatActivity implements VariableLea
             case R.id.navigation_home:
                 return true;
             case R.id.navigation_dashboard:
+                FormCoursesKeyWords formCoursesKeyWords = new FormCoursesKeyWords();
+                getBackStackandReplace(formCoursesKeyWords);
                 return true;
-            case R.id.navigation_notifications:
-                return true;
+
         }
         return false;
     };
@@ -45,7 +43,7 @@ public class NavigationActivity extends AppCompatActivity implements VariableLea
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        VariableLearningCourses askMe = new VariableLearningCourses();
+        VariantLearningCourses askMe = new VariantLearningCourses();
         ft.add(R.id.container, askMe);
         ft.commit();
     }

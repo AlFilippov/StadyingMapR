@@ -1,6 +1,7 @@
 package com.alphilippov.studyingmap.fragments;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,26 +13,31 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.alphilippov.studyingmap.R;
+import com.alphilippov.studyingmap.databind.VariantLearningBinding;
+import com.alphilippov.studyingmap.databinding.VariableLearningCoursesBinding;
 
-public class VariableLearningCourses extends Fragment implements Button.OnClickListener {
+public class VariantLearningCourses extends Fragment {
 
     private static final String YES_DECIDED = "ydecided";
     private static final String WANT_DEFENITION = "wdecided";
+    private VariableLearningCoursesBinding mBinding;
+
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View askMe = inflater.inflate(R.layout.variable_learning_courses, container, false);
-        TextView mAskMainQuestion = askMe.findViewById(R.id.askMe);
-        Button mYDecided = askMe.findViewById(R.id.ydecided);
-        Button mWDefenition = askMe.findViewById(R.id.wdefinition);
-        mYDecided.setOnClickListener(this);
-        mWDefenition.setOnClickListener(this);
-        return askMe;
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.variable_learning_courses, container, false);
+        mBinding.setVariantLearningDB(new VariantLearningBinding(
+                "Do you know what you want to know ?",
+                "No,I want to decide",
+                "I know"));
+        mBinding.setOnClick(this::onClick);
+        return mBinding.getRoot();
 
     }
 
-    @Override
+
     public void onClick(View button) {
         switch (button.getId()) {
             case R.id.ydecided:

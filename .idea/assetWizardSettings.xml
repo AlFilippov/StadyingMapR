@@ -171,7 +171,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/E:/Programming/Android/plugins/android/lib/android.jar!/images/material_design_icons/device/ic_storage_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/E:/Programming/Android/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_search_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -181,8 +181,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="09268c" />
-                            <entry key="outputName" value="ic_favorites_blue_24dp" />
+                            <entry key="outputName" value="ic_search_black_24dp" />
                             <entry key="sourceFile" value="C:\Users\Developer" />
                           </map>
                         </option>

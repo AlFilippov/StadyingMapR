@@ -1,64 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <ImageView
-        android:id="@+id/image_content_about_course"
-        android:layout_width="match_parent"
-        android:layout_height="300dp" />
-    <TextView
-    android:id="@+id/title_content_about_course"
-    android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:textAllCaps="false"
-    android:textAlignment="gravity"
-    />
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="ContentAboutCourseDB"
+            type="com.alphilippov.studyingmap.databind.ContentAboutCourseBinding" />
+
+        <variable
+            name="CourseImage"
+            type="String" />
+
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener" />
+
+
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:textAlignment="center"
-    >
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <RatingBar
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:numStars="5"
-            android:rating="3"
-            android:stepSize="0.1" />
+        <ImageView
+            android:id="@+id/image_content_about_course"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:CourseImage="@{CourseImage}" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/title_content_about_course"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="@{ContentAboutCourseDB.titleCourse}"
+            android:textAlignment="gravity"
+            android:textAllCaps="false" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:textAlignment="center">
+
+            <RatingBar
+                android:id="@+id/rating_content_about_course"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:numStars="5"
+                android:rating="@{ContentAboutCourseDB.ratingBarCourse}"
+                android:stepSize="0.1" />
+
+            <TextView
+                android:id="@+id/num_reviews_content_about_course"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:text="@{Integer.toString(ContentAboutCourseDB.numReviewsCourse).concat(@string/space).concat(ContentAboutCourseDB.nameReviewsCourse)}"
+                tools:text="667 оценок" />
+
+
+            <TextView
+                android:id="@+id/num_subscribers_content_about_course"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@{Integer.toString(ContentAboutCourseDB.numSubscribersCourse).concat(@string/space).concat(ContentAboutCourseDB.nameSubscribersCourse)}"
+                tools:text="2297 студентов зарегестрировано" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/author_content_about_course"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="(666"
-            android:layout_gravity="center"/>
-        <TextView
-            android:layout_width="wrap_content"
+            android:text="@{ContentAboutCourseDB.authorCourse}"
+            android:textAlignment="gravity"
+            android:textAllCaps="false"
+            android:textStyle="italic"
+            tools:text="Author"
+
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Оценок)"
-            android:layout_gravity="center"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2297 студентов зарегестрировано"
-            android:layout_gravity="center"/>
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/price_content_about_course"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="@{Integer.toString(ContentAboutCourseDB.priceNumCourse).concat(@string/space).concat(ContentAboutCourseDB.priceSymbolCourse)}"
+                tools:text="11999 rub" />
+
+            <TextView
+                android:id="@+id/price_discount_content_about_course"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="@{Integer.toString(ContentAboutCourseDB.discountNumCourse).concat(@string/space).concat(ContentAboutCourseDB.discountCourse)}"
+                tools:text="999 rub" />
+
+            <TextView
+                android:id="@+id/discount_percent_about_course"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="@{ContentAboutCourseDB.discountCourse.concat(@string/space).concat(Integer.toString(ContentAboutCourseDB.discountNumCourse).concat(@string/space).concat(@string/percent))}"
+                tools:text="Discount 92 %" />
+        </LinearLayout>
+
+        <com.alphilippov.studyingmap.widget.FButton
+            android:id="@+id/site_content_about_course"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="@{ContentAboutCourseDB.buttonSite}"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textStyle="italic"
+            app:onClickListener="@{onClick}"
+            fbutton:buttonColor="@color/fbutton_color_peter_river"
+            fbutton:cornerRadius="5dp"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="5dp"
+            tools:text="Site" />
     </LinearLayout>
-    <TextView
-        android:id="@+id/author_content_about_course"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:textAllCaps="false"
-        android:textAlignment="gravity"
-        android:text="Author"
-        android:textStyle="italic"
-
-        />
-
-</LinearLayout>
+</layout>

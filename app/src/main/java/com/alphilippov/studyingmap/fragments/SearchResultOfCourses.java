@@ -90,6 +90,7 @@ public class SearchResultOfCourses extends Fragment {
 
         });
     }
+
     RecyclerView.OnScrollListener recyclerViewOnScrollListener = new RecyclerView.OnScrollListener() {
         @Override
         public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
@@ -110,19 +111,13 @@ public class SearchResultOfCourses extends Fragment {
                         && scrollItems >= 0) {
                     isScrolling = false;
                     loadMoreInformation(page, indexInterest);
-                    page++;
-                    indexInterest++;
+                    paginationPage(finish);
 
 
                 }
             }
         }
-        //realist interior-design,home-improvement,architectural-design,yoga,massage,acupressure,aromatherapy,life-coaching,reflexology
-//intelectual     web-development , mobile-apps,programming-languages,databases,software-testing,game-development,software-engineering
-//social psychology-fundamentals , social-psychology,accounting,counseling,digital-marketing,advertising,public-relations,marketing-fundamentals,branding,social-media-marketing,
-//office accounting,digital-marketing,sales,social-media-marketing,advertising,microsoft,economics,management
-        //entreprenirual business-law,home-business,leadership,human-resources,finance,entrepreneurship,communications,management,sales,branding,industry,self-esteem,
-//articstic design-thinking,web-design,mobile-app-design,user-experience-design,photography-fundamentals,portraits,arts-and-crafts,influence,self-esteem
+
     };
 
 
@@ -138,6 +133,14 @@ public class SearchResultOfCourses extends Fragment {
 
             }
 
+        }
+    }
+
+    public void paginationPage(List<String> finish) {
+        if (finish.size() != 0) {
+            page++;
+        } else {
+            indexInterest++;
         }
     }
 
@@ -221,7 +224,7 @@ public class SearchResultOfCourses extends Fragment {
 
             @Override
             public void onLongClick(View view, int position) {
-                Toast.makeText(getContext(), "remove you finger PLEASE ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Added to Favorites ", Toast.LENGTH_SHORT).show();
 
             }
         }));

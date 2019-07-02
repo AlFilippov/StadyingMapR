@@ -18,10 +18,10 @@
     <string name="quest_profdef_first">1</string>
     <string name="title_activity_navigation">Studying Map</string>
     <string name="title_home">Favorites</string>
-    <string name="title_dashboard">Other</string>
-    <string name="title_notifications">Тут нет ничего</string>
+    <string name="title_dashboard">Search</string>
     <string name="content_text_view_request">What we will search ?</string>
     <string name="content_button_request">Search</string>
-    <string name="navigation_dashboard">Favorites</string>
-
+    <string name="navigation_dashboard">Search</string>
+    <string name="space">\u0020</string>
+    <string name="percent">%</string>
 </resources>
