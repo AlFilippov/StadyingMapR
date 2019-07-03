@@ -29,8 +29,9 @@ public class NavigationActivity extends AppCompatActivity implements VariantLear
                 ft.commit();
                 return true;
             case R.id.navigation_search:
-                FormCoursesKeyWords formCoursesKeyWords = new FormCoursesKeyWords();
-                getBackStackandReplace(formCoursesKeyWords);
+                //TODO:Написать управление бэкстэком фрагментов
+            //    FormCoursesKeyWords formCoursesKeyWords = new FormCoursesKeyWords();
+             //   getBackStackandReplace(formCoursesKeyWords);
                 return true;
             case R.id.navigation_favorites:
                 return true;
