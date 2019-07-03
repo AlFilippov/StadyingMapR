@@ -157,7 +157,7 @@ public class ResultsAfterSearchKeyWords extends Fragment {
 
             @Override
             public void onLongClick(View view, int position) {
-                Toast.makeText(getContext(), "remove you finger PLEASE ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "will be added to favorites", Toast.LENGTH_SHORT).show();
 
             }
         }));

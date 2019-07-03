@@ -5,10 +5,11 @@ public interface AppConfig {
     String BASE_URL = "https://www.udemy.com/api-2.0/";
     String BASE_URL_TWO = "http://192.168.1.39:5000/";
 
-    interface SharedPrefernce {
-        String APP_PREFERENCES = "myData";
-        String APP_PREFERENCES_LOGIN = " ";
-        String APP_PREFERENCES_PASSWORD = " ";
+    interface ChangeFragment {
+        String FORM_COURSES_KEY_WORDS= "ydecided";
+        String PROFESSION_DEFINITION = "wdecided";
+        String SEARCH_RESULT_OF_COURSES = "yes";
+        String RESULT_AFTER_SEARCH_KEY_WORDS= "ok";
 
     }
 
@@ -19,7 +20,7 @@ public interface AppConfig {
         int OFFICE = 4;
         int ENTREPRENEURIAL = 5;
         int ARTISTIC = 6;
-        int QUANTITY_QUESTIONS = 30;
+
     }
 
     interface Authorization {

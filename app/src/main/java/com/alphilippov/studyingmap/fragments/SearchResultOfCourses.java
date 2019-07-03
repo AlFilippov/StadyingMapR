@@ -30,6 +30,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SearchResultOfCourses extends Fragment {
+    private static final String SEARCH_RESULT = "result";
+    private static final String HIGH_INT_KEY = "high";
+    private static final String MIDDLE_INT_KEY = "middle";
+    private static final String LOW_INT_KEY = "low";
     private ArrayList<UserModelDto.Result> moreUserModel = new ArrayList<>();
     public List<String> intellectualList = new ArrayList<>();
     public List<String> realistList = new ArrayList<>();
@@ -38,12 +42,8 @@ public class SearchResultOfCourses extends Fragment {
     public List<String> entrepreneuriaList = new ArrayList<>();
     public List<String> artistictList = new ArrayList<>();
     public List<List<String>> intGroup = new ArrayList<>();
-    private HashMap<String, List<String>> mListHashMap;
-    private static final String SEARCH_RESULT = "result";
-    private static final String HIGH_INT_KEY = "high";
-    private static final String MIDDLE_INT_KEY = "middle";
-    private static final String LOW_INT_KEY = "low";
     public List<String> finish = new ArrayList<>();
+    private HashMap<String, List<String>> mListHashMap;
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(getActivity());
     private boolean isScrolling;
@@ -224,7 +224,7 @@ public class SearchResultOfCourses extends Fragment {
 
             @Override
             public void onLongClick(View view, int position) {
-                Toast.makeText(getContext(), "Added to Favorites ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "will be added to favorites", Toast.LENGTH_SHORT).show();
 
             }
         }));

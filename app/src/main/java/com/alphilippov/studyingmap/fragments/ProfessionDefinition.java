@@ -39,7 +39,6 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 
 
 public class ProfessionDefinition extends Fragment {
-    private static final String TAG = ProfessionDefinition.class.getName();
     private static final String HIGH_INT_KEY = "high";
     private static final String MIDDLE_INT_KEY = "middle";
     private static final String LOW_INT_KEY = "low";

@@ -15,11 +15,10 @@ import android.widget.TextView;
 import com.alphilippov.studyingmap.R;
 import com.alphilippov.studyingmap.databind.VariantLearningBinding;
 import com.alphilippov.studyingmap.databinding.VariableLearningCoursesBinding;
+import com.alphilippov.studyingmap.utils.AppConfig;
 
 public class VariantLearningCourses extends Fragment {
 
-    private static final String YES_DECIDED = "ydecided";
-    private static final String WANT_DEFENITION = "wdecided";
     private VariableLearningCoursesBinding mBinding;
 
 
@@ -41,10 +40,10 @@ public class VariantLearningCourses extends Fragment {
     public void onClick(View button) {
         switch (button.getId()) {
             case R.id.ydecided:
-                mChangedFragment.ChangedFragment(YES_DECIDED);
+                mChangedFragment.ChangedFragment(AppConfig.ChangeFragment.FORM_COURSES_KEY_WORDS);
                 break;
             case R.id.wdefinition:
-                mChangedFragment.ChangedFragment(WANT_DEFENITION);
+                mChangedFragment.ChangedFragment(AppConfig.ChangeFragment.PROFESSION_DEFINITION);
                 break;
         }
     }

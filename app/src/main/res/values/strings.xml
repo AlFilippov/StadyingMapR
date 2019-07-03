@@ -17,8 +17,9 @@
     <string name="quest_profdef_continue_two">из 30</string>
     <string name="quest_profdef_first">1</string>
     <string name="title_activity_navigation">Studying Map</string>
-    <string name="title_home">Favorites</string>
-    <string name="title_dashboard">Search</string>
+    <string name="title_favorites">Favorites</string>
+    <string name="title_search">Search</string>
+    <string name="title_tests">Tests</string>
     <string name="content_text_view_request">What we will search ?</string>
     <string name="content_button_request">Search</string>
     <string name="navigation_dashboard">Search</string>
