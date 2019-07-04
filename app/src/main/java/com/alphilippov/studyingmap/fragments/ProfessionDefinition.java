@@ -135,16 +135,6 @@ public class ProfessionDefinition extends Fragment {
     }
 
 
-    private void addPositionProfessionDefenition(int index, List<ProfessionOnePartDTO> onePartDTOList, List<ProfessionTwoPartDTO> twoPartDTOList) {
-
-        ProfessionOnePart.add(new ProfessionalDefinition(onePartDTOList.get(index).getIdDefinition(),
-                onePartDTOList.get(index).getIndexDefenition(),
-                onePartDTOList.get(index).getProfession()));
-        ProfessionTwoPart.add(new ProfessionalDefinition(twoPartDTOList.get(index).getIdDefinition(),
-                twoPartDTOList.get(index).getIndexDefenition(),
-                twoPartDTOList.get(index).getProfession()));
-
-    }
 
     public List<ProfessionalDefinition> getProfessionThreePart() {
         return ProfessionThreePart;
@@ -160,7 +150,7 @@ public class ProfessionDefinition extends Fragment {
     }
 
     private void replaceFragment() {
-        mSentDataFragment.onSentData("YES", mHashInterest);
+        mSentDataFragment.onSentData(AppConfig.ChangeFragment.SEARCH_RESULT_OF_COURSES, mHashInterest);
 
     }
 
@@ -209,6 +199,7 @@ public class ProfessionDefinition extends Fragment {
         ProfessionOnePart.add(new ProfessionalDefinition(2, 28, "Programmer"));
         ProfessionOnePart.add(new ProfessionalDefinition(4, 29, "Accountant"));
         ProfessionOnePart.add(new ProfessionalDefinition(7, 29, "Accountant"));
+
 
         ProfessionTwoPart.add(new ProfessionalDefinition(3, 0, "Physiotherapist"));
         ProfessionTwoPart.add(new ProfessionalDefinition(5, 1, "Logistics specialist"));

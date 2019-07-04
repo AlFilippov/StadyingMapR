@@ -22,11 +22,7 @@ public class NavigationActivity extends AppCompatActivity implements VariantLear
             = item -> {
         switch (item.getItemId()) {
             case R.id.navigation_home:
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction ft = fragmentManager.beginTransaction();
-                VariantLearningCourses askMe = new VariantLearningCourses();
-                ft.add(R.id.container, askMe);
-                ft.commit();
+
                 return true;
             case R.id.navigation_search:
                 //TODO:Написать управление бэкстэком фрагментов
@@ -45,7 +41,11 @@ public class NavigationActivity extends AppCompatActivity implements VariantLear
         setContentView(R.layout.activity_navigation);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        VariantLearningCourses askMe = new VariantLearningCourses();
+        ft.add(R.id.container, askMe);
+        ft.commit();
     }
 
     @Override
@@ -65,9 +65,9 @@ public class NavigationActivity extends AppCompatActivity implements VariantLear
         if (d.equals(AppConfig.ChangeFragment.SEARCH_RESULT_OF_COURSES)) {
             Bundle bundle = new Bundle();
             SearchResultOfCourses searchResultOfCourses = new SearchResultOfCourses();
-            getBackStackandReplace(searchResultOfCourses);
             bundle.putSerializable("result", hashMap);
             searchResultOfCourses.setArguments(bundle);
+            getBackStackandReplace(searchResultOfCourses);
 
         }
     }

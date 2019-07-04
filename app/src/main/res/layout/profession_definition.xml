@@ -97,6 +97,7 @@
             android:layout_below="@id/quantity_text"
             android:gravity="center"
             android:layout_marginTop="10dp"
+            android:orientation="horizontal"
             >
 
             <com.alphilippov.studyingmap.widget.FButton
@@ -104,7 +105,7 @@
                 android:id="@+id/OnePartButton"
                 android:layout_width="120dp"
                 android:layout_height="60dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="30dp"
                 android:text="@{ProfessionalDefinitionDB.buttonOnePart}"
                 android:textAlignment="center"
                 fbutton:buttonColor="@color/fbutton_color_peter_river"
