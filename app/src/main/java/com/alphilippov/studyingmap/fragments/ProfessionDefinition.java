@@ -3,6 +3,7 @@ package com.alphilippov.studyingmap.fragments;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -59,7 +60,8 @@ public class ProfessionDefinition extends Fragment {
     public List<String> MiddleIntGroup = new ArrayList<>();
     public List<String> LowIntGroup = new ArrayList<>();
     public int QuestionCount = 1;
-
+    private Bundle savedState = null;
+    private Parcelable mListState;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -76,6 +78,7 @@ public class ProfessionDefinition extends Fragment {
 
     @Override
     public void onResume() {
+        if(savedState!=null)
         super.onResume();
     }
 
@@ -100,7 +103,15 @@ public class ProfessionDefinition extends Fragment {
         Button mTwoPartButton = binding.TwoPartButton;
 
 
+        if (savedInstanceState != null && savedState == null) {
+            savedState = savedInstanceState.getBundle("save");
+        }
+        if (savedState != null) {
+            //Иначе мы берем из ранее сохранненого состояния экземпляра onDestroyView
+           mCountQue.setText(savedState.getCharSequence("save"));
 
+
+        }
 
             mOnePartButton.setOnClickListener(view -> {
 
@@ -133,6 +144,21 @@ public class ProfessionDefinition extends Fragment {
         return binding.getRoot();
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putBundle("save", (savedState != null) ? savedState : savedState());
+        super.onSaveInstanceState(outState);
+    }
+    private Bundle savedState() {
+        Bundle state = new Bundle();
+        state.putCharSequence("save",mCountQue.getText());
+        return state;
+    }
+    @Override
+    public void onDestroyView() {
+        savedState = savedState();
+        super.onDestroyView();
+    }
 
     public void loadDataAboutProfession(int index) {
 

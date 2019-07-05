@@ -2,6 +2,7 @@ package com.alphilippov.studyingmap.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -46,20 +47,15 @@ public class SearchResultOfCourses extends Fragment {
     public List<List<String>> intGroup = new ArrayList<>();
     public List<String> finish = new ArrayList<>();
     private HashMap<String, List<String>> mListHashMap;
+    private HashMap<String,List<UserModelDto.Result>> mHash ;
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(getActivity());
     private boolean isScrolling;
     private int page = 1;
     private int indexInterest = 0;
     private int lastVisiblePosition;
-
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        View qView = inflater.inflate(R.layout.search_result_of_courses, container, false);
-        mRecyclerView = qView.findViewById(R.id.list);
-        Log.i(TAG, "OnCreateView");
-        return qView;
-    }
+    private Bundle savedState = null;
+    private Parcelable mListState;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -94,6 +90,47 @@ public class SearchResultOfCourses extends Fragment {
         });
     }
 
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        Log.i(TAG, "OnCreateView");
+        View qView = inflater.inflate(R.layout.search_result_of_courses, container, false);
+        mRecyclerView = qView.findViewById(R.id.list);
+
+        if (savedInstanceState != null && savedState == null) {
+            //Берем из бандла , если фрагмент был уничтожен при повороте
+            savedState = savedInstanceState.getBundle("save");
+        }
+        if (savedState != null) {
+        //Иначе мы берем из ранее сохранненого состояния экземпляра onDestroyView
+            mListState = savedState().getParcelable("saveState");
+            mRecyclerView.getLayoutManager().onRestoreInstanceState(mListState);
+
+
+        }
+        return qView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        Log.i(TAG, "onDestroyView");
+        super.onDestroyView();
+        savedState = savedState();
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        Log.i(TAG, "SaveState");
+        outState.putBundle("save", (savedState != null) ? savedState : savedState());
+        super.onSaveInstanceState(outState);
+    }
+
+    private Bundle savedState() {
+        Bundle state = new Bundle();
+        mListState = mRecyclerView.getLayoutManager().onSaveInstanceState();
+        state.putParcelable("saveState", mListState);
+        return state;
+    }
+
     @Override
     public void onPause() {
         Log.i(TAG, "OnPause");
@@ -103,6 +140,7 @@ public class SearchResultOfCourses extends Fragment {
     @Override
     public void onResume() {
         Log.i(TAG, "OnResume");
+
         super.onResume();
     }
 
@@ -110,12 +148,6 @@ public class SearchResultOfCourses extends Fragment {
     public void onStop() {
         Log.i(TAG, "OnStop");
         super.onStop();
-    }
-
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        Log.i(TAG, "SaveState");
-        super.onSaveInstanceState(outState);
     }
 
     RecyclerView.OnScrollListener recyclerViewOnScrollListener = new RecyclerView.OnScrollListener() {
@@ -150,12 +182,12 @@ public class SearchResultOfCourses extends Fragment {
 
 
     private void compareGroup(HashMap hashMap) {
-        String[] mNameGroupInteres = {"realist", "intellectual", "social", "office", "entrepreneurial", "artistic"};
+        String[] mNameGroupInterest = {"realist", "intellectual", "social", "office", "entrepreneurial", "artistic"};
         String[] keyArray = {HIGH_INT_KEY, MIDDLE_INT_KEY, LOW_INT_KEY};
 
         for (int j = 0; j <= keyArray.length - 1; j++) {
-            for (int i = 0; i <= mNameGroupInteres.length - 1; i++) {
-                if (getListIntHshMap(hashMap, keyArray[j]).contains(mNameGroupInteres[i])
+            for (int i = 0; i <= mNameGroupInterest.length - 1; i++) {
+                if (getListIntHshMap(hashMap, keyArray[j]).contains(mNameGroupInterest[i])
                         && getListIntHshMap(hashMap, keyArray[j]).size() > 0)
                     getPositionList(i, intGroup);
 

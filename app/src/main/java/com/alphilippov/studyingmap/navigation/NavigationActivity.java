@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.alphilippov.studyingmap.R;
+import com.alphilippov.studyingmap.databind.VariantLearningBinding;
 import com.alphilippov.studyingmap.fragments.FormCoursesKeyWords;
 import com.alphilippov.studyingmap.fragments.ResultsAfterSearchKeyWords;
 import com.alphilippov.studyingmap.fragments.VariantLearningCourses;
@@ -30,6 +31,8 @@ public class NavigationActivity extends AppCompatActivity implements VariantLear
              //   getBackStackandReplace(formCoursesKeyWords);
                 return true;
             case R.id.navigation_favorites:
+                VariantLearningCourses variantLearningCourses = new VariantLearningCourses();
+                getBackStackandReplace(variantLearningCourses);
                 return true;
         }
         return false;
