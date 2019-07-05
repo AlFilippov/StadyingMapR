@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alphilippov.studyingmap.R;
 import com.alphilippov.studyingmap.databind.ProfessionBinding;
@@ -68,6 +69,18 @@ public class ProfessionDefinition extends Fragment {
 
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -87,33 +100,35 @@ public class ProfessionDefinition extends Fragment {
         Button mTwoPartButton = binding.TwoPartButton;
 
 
-        mOnePartButton.setOnClickListener(view -> {
-
-            if (QuestionCount == 1) {
-                collectList(ProfessionOnePart, 0);
-            }
-
-            collectList(ProfessionOnePart, QuestionCount);
-            mOnePartButton.setText(setItemListOnePart(ProfessionOnePart, QuestionCount));
-            mTwoPartButton.setText(setItemListTwoPart(ProfessionTwoPart, QuestionCount));
-            QuestionCount++;
-            countView(QuestionCount);
-
-        });
 
 
-        mTwoPartButton.setOnClickListener(view -> {
-            if (QuestionCount == 1) {
-                collectList(ProfessionTwoPart, 0);
-            }
+            mOnePartButton.setOnClickListener(view -> {
 
-            collectList(ProfessionTwoPart, QuestionCount);
-            mOnePartButton.setText(setItemListOnePart(ProfessionOnePart, QuestionCount));
-            mTwoPartButton.setText(setItemListTwoPart(ProfessionTwoPart, QuestionCount));
-            QuestionCount++;
+                if (QuestionCount == 1) {
+                    collectList(ProfessionOnePart, 0);
+                }
 
-            countView(QuestionCount);
-        });
+                collectList(ProfessionOnePart, QuestionCount);
+                mOnePartButton.setText(setItemListOnePart(ProfessionOnePart, QuestionCount));
+                mTwoPartButton.setText(setItemListTwoPart(ProfessionTwoPart, QuestionCount));
+                QuestionCount++;
+                countView(QuestionCount);
+
+            });
+
+
+            mTwoPartButton.setOnClickListener(view -> {
+                if (QuestionCount == 1) {
+                    collectList(ProfessionTwoPart, 0);
+                }
+
+                collectList(ProfessionTwoPart, QuestionCount);
+                mOnePartButton.setText(setItemListOnePart(ProfessionOnePart, QuestionCount));
+                mTwoPartButton.setText(setItemListTwoPart(ProfessionTwoPart, QuestionCount));
+                QuestionCount++;
+
+                countView(QuestionCount);
+            });
 
         return binding.getRoot();
     }
@@ -133,7 +148,6 @@ public class ProfessionDefinition extends Fragment {
             }
         });
     }
-
 
 
     public List<ProfessionalDefinition> getProfessionThreePart() {

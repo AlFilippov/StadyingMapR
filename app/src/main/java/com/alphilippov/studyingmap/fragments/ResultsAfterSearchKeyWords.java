@@ -43,6 +43,7 @@ public class ResultsAfterSearchKeyWords extends Fragment {
     private ArrayList<UserModelDto.Result> userModeltoInfAboutCourse = new ArrayList<>();
     private String keyWords;
     private boolean isScrolling;
+    private int lastVisiblePosition;
     private int page = 1;
 
     @Override
@@ -82,6 +83,7 @@ public class ResultsAfterSearchKeyWords extends Fragment {
                 if ((currentItems + scrollItems) == totalItems
                         && scrollItems >= 0) {
                     isScrolling = false;
+                    lastVisiblePosition = mLinearLayoutManager.findLastVisibleItemPosition();
                     loadMoreInformation(page);
                     page++;
 
@@ -143,8 +145,8 @@ public class ResultsAfterSearchKeyWords extends Fragment {
     private void generateContent(ArrayList<UserModelDto.Result> results) {
         DataAdapter mData = new DataAdapter(getContext(), results);
         mRecyclerView.setAdapter(mData);
-        mData.notifyDataSetChanged();
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
+        mRecyclerView.getLayoutManager().scrollToPosition(lastVisiblePosition);
         mRecyclerView.addOnScrollListener(recyclerViewOnScrollListener);
         mRecyclerView.addOnItemTouchListener(new RecyclerViewTouchListener(getContext(),
                 mRecyclerView, new RecyclerViewClickListener() {

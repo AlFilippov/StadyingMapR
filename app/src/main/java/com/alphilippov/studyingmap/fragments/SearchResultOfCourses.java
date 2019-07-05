@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ public class SearchResultOfCourses extends Fragment {
     private static final String HIGH_INT_KEY = "high";
     private static final String MIDDLE_INT_KEY = "middle";
     private static final String LOW_INT_KEY = "low";
+    private static final String TAG = SearchResultOfCourses.class.getName();
     private ArrayList<UserModelDto.Result> moreUserModel = new ArrayList<>();
     public List<String> intellectualList = new ArrayList<>();
     public List<String> realistList = new ArrayList<>();
@@ -49,13 +51,13 @@ public class SearchResultOfCourses extends Fragment {
     private boolean isScrolling;
     private int page = 1;
     private int indexInterest = 0;
-
+    private int lastVisiblePosition;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View qView = inflater.inflate(R.layout.search_result_of_courses, container, false);
         mRecyclerView = qView.findViewById(R.id.list);
-
+        Log.i(TAG, "OnCreateView");
         return qView;
     }
 
@@ -63,6 +65,7 @@ public class SearchResultOfCourses extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initDataList();
+        Log.i(TAG, "OnCreate");
         Bundle bundle = new Bundle(getArguments());
         mListHashMap = (HashMap<String, List<String>>) bundle.getSerializable(SEARCH_RESULT);
         compareGroup(mListHashMap);
@@ -91,6 +94,30 @@ public class SearchResultOfCourses extends Fragment {
         });
     }
 
+    @Override
+    public void onPause() {
+        Log.i(TAG, "OnPause");
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        Log.i(TAG, "OnResume");
+        super.onResume();
+    }
+
+    @Override
+    public void onStop() {
+        Log.i(TAG, "OnStop");
+        super.onStop();
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        Log.i(TAG, "SaveState");
+        super.onSaveInstanceState(outState);
+    }
+
     RecyclerView.OnScrollListener recyclerViewOnScrollListener = new RecyclerView.OnScrollListener() {
         @Override
         public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
@@ -110,6 +137,7 @@ public class SearchResultOfCourses extends Fragment {
                 if ((currentItems + scrollItems) == totalItems
                         && scrollItems >= 0) {
                     isScrolling = false;
+                    lastVisiblePosition = mLinearLayoutManager.findLastVisibleItemPosition();
                     loadMoreInformation(page, indexInterest);
                     paginationPage(finish);
 
@@ -209,10 +237,11 @@ public class SearchResultOfCourses extends Fragment {
 
 
     private void generateContent(ArrayList<UserModelDto.Result> results) {
+        Log.i(TAG, String.valueOf(lastVisiblePosition));
         DataAdapter mData = new DataAdapter(getContext(), results);
         mRecyclerView.setAdapter(mData);
-        mData.notifyDataSetChanged();
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
+        mRecyclerView.getLayoutManager().scrollToPosition(lastVisiblePosition);
         mRecyclerView.addOnScrollListener(recyclerViewOnScrollListener);
         mRecyclerView.addOnItemTouchListener(new RecyclerViewTouchListener(getContext(),
                 mRecyclerView, new RecyclerViewClickListener() {
