@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.alphilippov.studyingmap.R;
-import com.alphilippov.studyingmap.databind.VariantLearningBinding;
 import com.alphilippov.studyingmap.fragments.FormCoursesKeyWords;
 import com.alphilippov.studyingmap.fragments.ResultsAfterSearchKeyWords;
 import com.alphilippov.studyingmap.fragments.VariantLearningCourses;
@@ -26,9 +25,7 @@ public class NavigationActivity extends AppCompatActivity implements VariantLear
 
                 return true;
             case R.id.navigation_search:
-                //TODO:Написать управление бэкстэком фрагментов
-            //    FormCoursesKeyWords formCoursesKeyWords = new FormCoursesKeyWords();
-             //   getBackStackandReplace(formCoursesKeyWords);
+
                 return true;
             case R.id.navigation_favorites:
                 VariantLearningCourses variantLearningCourses = new VariantLearningCourses();
@@ -87,11 +84,19 @@ public class NavigationActivity extends AppCompatActivity implements VariantLear
         }
     }
 
-    private void getBackStackandReplace(Fragment fragment) {
+    private void getBackStackandReplace(Fragment fragmentAfter) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.container, fragment);
+        ft.replace(R.id.container, fragmentAfter);
         ft.addToBackStack(null);
         ft.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.popBackStack();
+
+        super.onBackPressed();
     }
 }

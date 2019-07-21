@@ -76,11 +76,11 @@ public class ProfessionDefinition extends Fragment {
         super.onPause();
     }
 
-    @Override
-    public void onResume() {
-        if(savedState!=null)
-        super.onResume();
-    }
+//    @Override
+//    public void onResume() {
+//        if(savedState!=null)
+//        super.onResume();
+//    }
 
 
 
@@ -103,15 +103,15 @@ public class ProfessionDefinition extends Fragment {
         Button mTwoPartButton = binding.TwoPartButton;
 
 
-        if (savedInstanceState != null && savedState == null) {
-            savedState = savedInstanceState.getBundle("save");
-        }
-        if (savedState != null) {
-            //Иначе мы берем из ранее сохранненого состояния экземпляра onDestroyView
-           mCountQue.setText(savedState.getCharSequence("save"));
-
-
-        }
+//        if (savedInstanceState != null && savedState == null) {
+//            savedState = savedInstanceState.getBundle("save");
+//        }
+//        if (savedState != null) {
+//            //Иначе мы берем из ранее сохранненого состояния экземпляра onDestroyView
+//           mCountQue.setText(savedState.getCharSequence("save"));
+//
+//
+//        }
 
             mOnePartButton.setOnClickListener(view -> {
 
@@ -144,21 +144,21 @@ public class ProfessionDefinition extends Fragment {
         return binding.getRoot();
     }
 
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        outState.putBundle("save", (savedState != null) ? savedState : savedState());
-        super.onSaveInstanceState(outState);
-    }
-    private Bundle savedState() {
-        Bundle state = new Bundle();
-        state.putCharSequence("save",mCountQue.getText());
-        return state;
-    }
-    @Override
-    public void onDestroyView() {
-        savedState = savedState();
-        super.onDestroyView();
-    }
+//    @Override
+//    public void onSaveInstanceState(@NonNull Bundle outState) {
+//        outState.putBundle("save", (savedState != null) ? savedState : savedState());
+//        super.onSaveInstanceState(outState);
+//    }
+//    private Bundle savedState() {
+//        Bundle state = new Bundle();
+//        state.putCharSequence("save",mCountQue.getText());
+//        return state;
+//    }
+//    @Override
+//    public void onDestroyView() {
+//        savedState = savedState();
+//        super.onDestroyView();
+//    }
 
     public void loadDataAboutProfession(int index) {
 
@@ -287,7 +287,7 @@ public class ProfessionDefinition extends Fragment {
 
     private void countView(int name) {
         String s = String.valueOf(name);
-        mCountQue.setText(s);
+     mCountQue.setText(s);
     }
 
     private void collectInteresGroups() {

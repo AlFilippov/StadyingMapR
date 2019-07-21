@@ -1,14 +1,10 @@
 package com.alphilippov.studyingmap.network;
 
-import com.alphilippov.studyingmap.BuildConfig;
 import com.alphilippov.studyingmap.utils.AppConfig;
 import com.google.common.io.BaseEncoding;
 
-import android.util.Base64;
-
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
