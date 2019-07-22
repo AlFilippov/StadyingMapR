@@ -6,5 +6,6 @@ public interface ProfessionDefinitionView extends MvpView {
     void setTextOnePartButton(String onePartButton);
     void setTextTwoPartButton(String twoPartButton);
     void setwCountTextQuestion(String value);
+    void showToastQuestionEnded();
 
 }
