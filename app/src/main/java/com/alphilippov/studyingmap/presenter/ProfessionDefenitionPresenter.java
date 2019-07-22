@@ -1,14 +1,14 @@
 package com.alphilippov.studyingmap.presenter;
 
-import com.alphilippov.studyingmap.fragments.ProfessionDefinition;
+import com.alphilippov.studyingmap.helperclasses.DistributionInterests;
 import com.alphilippov.studyingmap.helperclasses.ProfessionalDefinition;
 import com.alphilippov.studyingmap.network.UdemyApi;
-import com.alphilippov.studyingmap.network.dto.UserModelDto;
 import com.alphilippov.studyingmap.view.ProfessionDefinitionView;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @InjectViewState
@@ -17,18 +17,21 @@ public class ProfessionDefenitionPresenter extends MvpPresenter<ProfessionDefini
     private int count = 1;
     private List<ProfessionalDefinition> onePartProfession = new ArrayList<>();
     private List<ProfessionalDefinition> twoPartProfession = new ArrayList<>();
+    private HashMap<String, List<String>> mInterest = new HashMap<>();
 
     public ProfessionDefenitionPresenter(UdemyApi udemyApi) {
         this.udemyApi = udemyApi;
     }
 
+
     public void isClickedGeneral(boolean click) {
         if (click) {
             setTextOnePartButton();
             setTextTwoPartButton();
-            getViewState().setwCountTextQuestion(String.valueOf(count));
+            getViewState().setCountTextQuestion(String.valueOf(count));
             count++;
         } else {
+
             getViewState().showToastQuestionEnded();
         }
     }
@@ -42,11 +45,11 @@ public class ProfessionDefenitionPresenter extends MvpPresenter<ProfessionDefini
 
     }
 
-    public void setTextOnePartButton() {
+    private void setTextOnePartButton() {
         getViewState().setTextOnePartButton("SomeData");
     }
 
-    public void setTextTwoPartButton() {
+    private void setTextTwoPartButton() {
         getViewState().setTextTwoPartButton("SomeData");
 
     }
@@ -60,4 +63,5 @@ public class ProfessionDefenitionPresenter extends MvpPresenter<ProfessionDefini
     public void loadChoiceinData(List<ProfessionalDefinition> dataProfession) {
 
     }
+
 }
