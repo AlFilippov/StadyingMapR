@@ -12,14 +12,14 @@ import java.util.HashMap;
 import java.util.List;
 
 @InjectViewState
-public class ProfessionDefenitionPresenter extends MvpPresenter<ProfessionDefinitionView> {
+public class ProfessionDefinitionPresenter extends MvpPresenter<ProfessionDefinitionView> {
     private UdemyApi udemyApi;
     private int count = 1;
     private List<ProfessionalDefinition> onePartProfession = new ArrayList<>();
     private List<ProfessionalDefinition> twoPartProfession = new ArrayList<>();
     private HashMap<String, List<String>> mInterest = new HashMap<>();
 
-    public ProfessionDefenitionPresenter(UdemyApi udemyApi) {
+    public ProfessionDefinitionPresenter(UdemyApi udemyApi) {
         this.udemyApi = udemyApi;
     }
 
