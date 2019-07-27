@@ -31,7 +31,6 @@ public class ProfessionDefenitionPresenter extends MvpPresenter<ProfessionDefini
             getViewState().setCountTextQuestion(String.valueOf(count));
             count++;
         } else {
-
             getViewState().showToastQuestionEnded();
         }
     }
