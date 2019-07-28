@@ -95,41 +95,9 @@ public class SearchResultOfCourses extends Fragment {
         Log.i(TAG, "OnCreateView");
         View qView = inflater.inflate(R.layout.search_result_of_courses, container, false);
         mRecyclerView = qView.findViewById(R.id.list);
-
-        if (savedInstanceState != null && savedState == null) {
-            //Берем из бандла , если фрагмент был уничтожен при повороте
-            savedState = savedInstanceState.getBundle("save");
-        }
-        if (savedState != null) {
-        //Иначе мы берем из ранее сохранненого состояния экземпляра onDestroyView
-            mListState = savedState().getParcelable("saveState");
-            mRecyclerView.getLayoutManager().onRestoreInstanceState(mListState);
-
-
-        }
         return qView;
     }
 
-    @Override
-    public void onDestroyView() {
-        Log.i(TAG, "onDestroyView");
-        super.onDestroyView();
-        savedState = savedState();
-    }
-
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        Log.i(TAG, "SaveState");
-        outState.putBundle("save", (savedState != null) ? savedState : savedState());
-        super.onSaveInstanceState(outState);
-    }
-
-    private Bundle savedState() {
-        Bundle state = new Bundle();
-        mListState = mRecyclerView.getLayoutManager().onSaveInstanceState();
-        state.putParcelable("saveState", mListState);
-        return state;
-    }
 
     @Override
     public void onPause() {

@@ -62,7 +62,7 @@ public class DistributionInterests {
         return mHashInterest;
     }
 
-    public void collectInterestHigh(int group, List<String> name) {
+    private void collectInterestHigh(int group, List<String> name) {
         HighInterestBefore = professionalDefinitions.stream().filter((p) -> p.getIdDefiniton() == group).
                 map(ProfessionalDefinition::getProfession).collect(Collectors.toList());
         if (HighInterestBefore.size() != 0)
@@ -74,7 +74,7 @@ public class DistributionInterests {
         mHashInterest.put(key, name);
     }
 
-    public void collectInterestMiddle(int group, List<String> name) {
+    private void collectInterestMiddle(int group, List<String> name) {
         MiddleInterestBefore = professionalDefinitions.stream().filter((p) -> p.getIdDefiniton() == group).
                 map(ProfessionalDefinition::getProfession).collect(Collectors.toList());
         if (MiddleInterestBefore.size() != 0)
@@ -82,7 +82,7 @@ public class DistributionInterests {
 
     }
 
-    public void collectInterestLow(int group, List<String> name) {
+    private void collectInterestLow(int group, List<String> name) {
         LowInterestBefore = professionalDefinitions.stream().filter((p) -> p.getIdDefiniton() == group).
                 map(ProfessionalDefinition::getProfession).collect(Collectors.toList());
         if (LowInterestBefore.size() != 0)

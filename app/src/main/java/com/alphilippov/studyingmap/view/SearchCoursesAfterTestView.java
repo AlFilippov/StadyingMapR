@@ -5,8 +5,9 @@ import com.arellomobile.mvp.MvpView;
 
 import java.util.List;
 
-public interface SearchResultOfCoursesView extends MvpView {
+public interface SearchCoursesAfterTestView extends MvpView {
     void loadProgressDownloading();
     void loadDataAdapter(List<UserModelDto>userModelDtoList);
     void checkConnectionInternet();
+
 }

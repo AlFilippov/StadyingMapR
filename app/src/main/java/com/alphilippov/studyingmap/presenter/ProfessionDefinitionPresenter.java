@@ -1,5 +1,6 @@
 package com.alphilippov.studyingmap.presenter;
 
+import com.alphilippov.studyingmap.fragments.ProfessionDefinition;
 import com.alphilippov.studyingmap.helperclasses.DistributionInterests;
 import com.alphilippov.studyingmap.helperclasses.ProfessionalDefinition;
 import com.alphilippov.studyingmap.network.UdemyApi;
@@ -17,7 +18,9 @@ public class ProfessionDefinitionPresenter extends MvpPresenter<ProfessionDefini
     private int count = 1;
     private List<ProfessionalDefinition> onePartProfession = new ArrayList<>();
     private List<ProfessionalDefinition> twoPartProfession = new ArrayList<>();
+    private List<ProfessionalDefinition> sumResponseUsers = new ArrayList<>();
     private HashMap<String, List<String>> mInterest = new HashMap<>();
+    private DistributionInterests distributionInterests;
 
     public ProfessionDefinitionPresenter(UdemyApi udemyApi) {
         this.udemyApi = udemyApi;
@@ -25,42 +28,118 @@ public class ProfessionDefinitionPresenter extends MvpPresenter<ProfessionDefini
 
 
     public void isClickedGeneral(boolean click) {
-        if (click) {
+        if (click && count <= onePartProfession.size()) {
             setTextOnePartButton();
             setTextTwoPartButton();
             getViewState().setCountTextQuestion(String.valueOf(count));
             count++;
         } else {
+            /*
+            Тут могу словить ексепшн
+             */
+            loadChoiceinData(sumResponseUsers);
+            mInterest.putAll(distributionInterests.collectInteresGroups());
             getViewState().showToastQuestionEnded();
         }
     }
 
+
     public void isClickedButtons(boolean clickButton) {
         if (clickButton) {
-            loadChoiceinData(fixChoiceQuestion(onePartProfession, count));
+            fixChoiceQuestion(onePartProfession, count);
         } else {
-            loadChoiceinData(fixChoiceQuestion(twoPartProfession, count));
+            fixChoiceQuestion(twoPartProfession, count);
         }
-
     }
 
+
     private void setTextOnePartButton() {
-        getViewState().setTextOnePartButton("SomeData");
+        getViewState().setTextOnePartButton(setTextProfession(onePartProfession, count));
     }
 
     private void setTextTwoPartButton() {
-        getViewState().setTextTwoPartButton("SomeData");
+        getViewState().setTextTwoPartButton(setTextProfession(twoPartProfession, count));
 
     }
 
-    public List<ProfessionalDefinition> fixChoiceQuestion(List<ProfessionalDefinition> results, int i) {
-        List<ProfessionalDefinition> resultsChoice = new ArrayList<>();
-        resultsChoice.add(results.get(i));
-        return resultsChoice;
+    private String setTextProfession(List<ProfessionalDefinition> profession, int i) {
+        return profession.get(i).getProfession();
     }
 
-    public void loadChoiceinData(List<ProfessionalDefinition> dataProfession) {
+    private List<ProfessionalDefinition> fixChoiceQuestion(List<ProfessionalDefinition> results, int i) {
+        sumResponseUsers.add(results.get(i));
+        return sumResponseUsers;
+    }
+
+    private void loadChoiceinData(List<ProfessionalDefinition> dataProfession) {
+        distributionInterests = new DistributionInterests(dataProfession);
 
     }
 
+    public void initializeObjectProfession() {
+        onePartProfession.add(new ProfessionalDefinition(1, 0, "Mechanic"));
+        onePartProfession.add(new ProfessionalDefinition(2, 1, "Information security specialist"));
+        onePartProfession.add(new ProfessionalDefinition(4, 2, "Call center operator"));
+        onePartProfession.add(new ProfessionalDefinition(1, 3, "Driver"));
+        onePartProfession.add(new ProfessionalDefinition(2, 4, "Design Engineer"));
+        onePartProfession.add(new ProfessionalDefinition(4, 5, "Air traffic controller"));
+        onePartProfession.add(new ProfessionalDefinition(1, 6, "Veterinarian"));
+        onePartProfession.add(new ProfessionalDefinition(2, 7, "Game developer "));
+        onePartProfession.add(new ProfessionalDefinition(4, 8, "Laboratory assistant"));
+        onePartProfession.add(new ProfessionalDefinition(1, 9, "Agronomist"));
+        onePartProfession.add(new ProfessionalDefinition(2, 10, "Breeder"));
+        onePartProfession.add(new ProfessionalDefinition(4, 11, "Marketer"));
+        onePartProfession.add(new ProfessionalDefinition(1, 12, "Masseur"));
+        onePartProfession.add(new ProfessionalDefinition(2, 13, "Teacher"));
+        onePartProfession.add(new ProfessionalDefinition(4, 14, "Facility manager"));
+        onePartProfession.add(new ProfessionalDefinition(1, 15, "Waiter"));
+        onePartProfession.add(new ProfessionalDefinition(2, 16, "Psychologist"));
+        onePartProfession.add(new ProfessionalDefinition(4, 17, "Insurance agent"));
+        onePartProfession.add(new ProfessionalDefinition(1, 18, "Jeweler"));
+        onePartProfession.add(new ProfessionalDefinition(2, 19, "Art Critic"));
+        onePartProfession.add(new ProfessionalDefinition(4, 20, "Editor"));
+        onePartProfession.add(new ProfessionalDefinition(1, 21, "Interior designer"));
+        onePartProfession.add(new ProfessionalDefinition(2, 22, "Software tester"));
+        onePartProfession.add(new ProfessionalDefinition(4, 23, "Copywriter"));
+        onePartProfession.add(new ProfessionalDefinition(2, 24, "System Administrator"));
+        onePartProfession.add(new ProfessionalDefinition(1, 25, "Carpenter"));
+        onePartProfession.add(new ProfessionalDefinition(4, 26, "Corrector"));
+        onePartProfession.add(new ProfessionalDefinition(1, 27, "Typewriter"));
+        onePartProfession.add(new ProfessionalDefinition(2, 28, "Programmer"));
+        onePartProfession.add(new ProfessionalDefinition(4, 29, "Accountant"));
+        onePartProfession.add(new ProfessionalDefinition(7, 29, "Accountant"));
+
+
+        twoPartProfession.add(new ProfessionalDefinition(3, 0, "Physiotherapist"));
+        twoPartProfession.add(new ProfessionalDefinition(5, 1, "Logistics specialist"));
+        twoPartProfession.add(new ProfessionalDefinition(6, 2, "Cameraman"));
+        twoPartProfession.add(new ProfessionalDefinition(3, 3, "Cashier"));
+        twoPartProfession.add(new ProfessionalDefinition(5, 4, "Auto Sales Manager"));
+        twoPartProfession.add(new ProfessionalDefinition(6, 5, "Web designer"));
+        twoPartProfession.add(new ProfessionalDefinition(3, 6, "Ecologist"));
+        twoPartProfession.add(new ProfessionalDefinition(5, 7, "Farmer"));
+        twoPartProfession.add(new ProfessionalDefinition(6, 8, "SEO specialist "));
+        twoPartProfession.add(new ProfessionalDefinition(3, 9, "Sanitary doctor"));
+        twoPartProfession.add(new ProfessionalDefinition(5, 10, "Agricultural Product Provider"));
+        twoPartProfession.add(new ProfessionalDefinition(6, 11, "Landscape designer"));
+        twoPartProfession.add(new ProfessionalDefinition(3, 12, "Tutor"));
+        twoPartProfession.add(new ProfessionalDefinition(5, 13, "Entrepreneur"));
+        twoPartProfession.add(new ProfessionalDefinition(6, 14, "Artist-animator"));
+        twoPartProfession.add(new ProfessionalDefinition(3, 15, "Doctor"));
+        twoPartProfession.add(new ProfessionalDefinition(5, 16, "Trading agent"));
+        twoPartProfession.add(new ProfessionalDefinition(6, 17, "Choreographer"));
+        twoPartProfession.add(new ProfessionalDefinition(3, 18, "Journalist"));
+        twoPartProfession.add(new ProfessionalDefinition(5, 19, "Producer"));
+        twoPartProfession.add(new ProfessionalDefinition(6, 20, "Musician"));
+        twoPartProfession.add(new ProfessionalDefinition(3, 21, "Guide"));
+        twoPartProfession.add(new ProfessionalDefinition(5, 22, "Art Director"));
+        twoPartProfession.add(new ProfessionalDefinition(6, 23, "Theater and film actor"));
+        twoPartProfession.add(new ProfessionalDefinition(3, 24, "Guide-translator"));
+        twoPartProfession.add(new ProfessionalDefinition(5, 25, "Crisis Manager"));
+        twoPartProfession.add(new ProfessionalDefinition(6, 26, "Art editor"));
+        twoPartProfession.add(new ProfessionalDefinition(3, 27, "Legal Counsel"));
+        twoPartProfession.add(new ProfessionalDefinition(5, 28, "Broker"));
+        twoPartProfession.add(new ProfessionalDefinition(6, 29, "Literary translator"));
+        twoPartProfession.add(new ProfessionalDefinition(7, 29, "Literary translator"));
+    }
 }

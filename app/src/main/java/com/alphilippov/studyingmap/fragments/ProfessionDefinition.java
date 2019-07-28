@@ -48,7 +48,7 @@ public class ProfessionDefinition extends MvpAppCompatActivity implements Profes
         Button mTwoPartButton = binding.TwoPartButton;
         mOnePartButton.setOnClickListener(this);
         mTwoPartButton.setOnClickListener(this);
-
+        professionDefinitionPresenter.initializeObjectProfession();
     }
 
     @Override
@@ -81,7 +81,7 @@ public class ProfessionDefinition extends MvpAppCompatActivity implements Profes
 
     @Override
     public void showToastQuestionEnded() {
-        Toast.makeText(this, "Questions is end", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Thank you for your patience", Toast.LENGTH_SHORT).show();
     }
 
     @Override
