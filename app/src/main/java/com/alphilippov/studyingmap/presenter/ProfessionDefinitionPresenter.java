@@ -1,16 +1,17 @@
 package com.alphilippov.studyingmap.presenter;
 
-import com.alphilippov.studyingmap.fragments.ProfessionDefinition;
 import com.alphilippov.studyingmap.helperclasses.DistributionInterests;
 import com.alphilippov.studyingmap.helperclasses.ProfessionalDefinition;
 import com.alphilippov.studyingmap.network.UdemyApi;
 import com.alphilippov.studyingmap.view.ProfessionDefinitionView;
-import com.arellomobile.mvp.InjectViewState;
-import com.arellomobile.mvp.MvpPresenter;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import moxy.InjectViewState;
+import moxy.MvpPresenter;
 
 @InjectViewState
 public class ProfessionDefinitionPresenter extends MvpPresenter<ProfessionDefinitionView> {

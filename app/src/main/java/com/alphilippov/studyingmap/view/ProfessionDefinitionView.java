@@ -1,6 +1,7 @@
 package com.alphilippov.studyingmap.view;
 
-import com.arellomobile.mvp.MvpView;
+
+import moxy.MvpView;
 
 public interface ProfessionDefinitionView extends MvpView {
     void setTextOnePartButton(String onePartButton);

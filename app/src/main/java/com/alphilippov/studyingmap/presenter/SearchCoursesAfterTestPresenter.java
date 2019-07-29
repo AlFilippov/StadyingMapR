@@ -1,8 +1,10 @@
 package com.alphilippov.studyingmap.presenter;
 
 import com.alphilippov.studyingmap.view.SearchCoursesAfterTestView;
-import com.arellomobile.mvp.InjectViewState;
-import com.arellomobile.mvp.MvpPresenter;
+
+import moxy.InjectViewState;
+import moxy.MvpPresenter;
+
 
 @InjectViewState
 public class SearchCoursesAfterTestPresenter extends MvpPresenter<SearchCoursesAfterTestView> {
@@ -12,7 +14,7 @@ public class SearchCoursesAfterTestPresenter extends MvpPresenter<SearchCoursesA
     public void progressLoading(boolean load){
         if(load)
         getViewState().loadProgressDownloading();
-      
+
 
     }
     public void checkedInternetConnection(boolean check){

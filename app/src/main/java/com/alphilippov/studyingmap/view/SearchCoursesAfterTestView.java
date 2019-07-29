@@ -1,9 +1,11 @@
 package com.alphilippov.studyingmap.view;
 
 import com.alphilippov.studyingmap.network.dto.UserModelDto;
-import com.arellomobile.mvp.MvpView;
+
 
 import java.util.List;
+
+import moxy.MvpView;
 
 public interface SearchCoursesAfterTestView extends MvpView {
     void loadProgressDownloading();
