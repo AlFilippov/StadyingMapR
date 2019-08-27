@@ -1,0 +1,159 @@
+{
+  "professionOnePart": [
+    {
+      "idDefinition": 1,
+      "indexDefinition": 0,
+      "profession": "Mechanic"
+    },
+    {
+      "idDefinition": 2,
+      "indexDefinition": 1,
+      "profession": "Information security specialist"
+    },
+    {
+      "idDefinition": 4,
+      "indexDefinition": 2,
+      "profession": "Call center operator"
+    },
+    {
+      "idDefinition": 1,
+      "indexDefinition": 3,
+      "profession": "Driver"
+    },
+    {
+      "idDefinition": 2,
+      "indexDefinition": 4,
+      "profession": "Design Engineer"
+    },
+    {
+      "idDefinition": 4,
+      "indexDefinition": 5,
+      "profession": "Air traffic controller"
+    },
+    {
+      "idDefinition": 1,
+      "indexDefinition": 6,
+      "profession": "Veterinarian"
+    },
+    {
+      "idDefinition": 2,
+      "indexDefinition": 7,
+      "profession": "Game developer "
+    },
+    {
+      "idDefinition": 4,
+      "indexDefinition": 8,
+      "profession": "Laboratory assistant"
+    },
+    {
+      "idDefinition": 1,
+      "indexDefinition": 9,
+      "profession": "Agronomist"
+    },
+    {
+      "idDefinition": 2,
+      "indexDefinition": 10,
+      "profession": "Breeder"
+    },
+    {
+      "idDefinition": 4,
+      "indexDefinition": 11,
+      "profession": "Marketer"
+    },
+    {
+      "idDefinition": 1,
+      "indexDefinition": 12,
+      "profession": "Masseur"
+    },
+    {
+      "idDefinition": 2,
+      "indexDefinition": 13,
+      "profession": "Teacher"
+    },
+    {
+      "idDefinition": 4,
+      "indexDefinition": 14,
+      "profession": "Facility manager"
+    },
+    {
+      "idDefinition": 1,
+      "indexDefinition": 15,
+      "profession": "Waiter"
+    },
+    {
+      "idDefinition": 2,
+      "indexDefinition": 16,
+      "profession": "Psychologist"
+    },
+    {
+      "idDefinition": 4,
+      "indexDefinition": 17,
+      "profession": "Insurance agent"
+    },
+    {
+      "idDefinition": 1,
+      "indexDefinition": 18,
+      "profession": "Jeweler"
+    },
+    {
+      "idDefinition": 2,
+      "indexDefinition": 19,
+      "profession": "Art Critic"
+    },
+    {
+      "idDefinition": 4,
+      "indexDefinition": 20,
+      "profession": "Editor"
+    },
+    {
+      "idDefinition": 1,
+      "indexDefinition": 21,
+      "profession": "Interior designer"
+    },
+    {
+      "idDefinition": 2,
+      "indexDefinition": 22,
+      "profession": "Software tester"
+    },
+    {
+      "idDefinition": 4,
+      "indexDefinition": 23,
+      "profession": "Copywriter"
+    },
+    {
+      "idDefinition": 2,
+      "indexDefinition": 24,
+      "profession": "System Administrator"
+    },
+    {
+      "idDefinition": 1,
+      "indexDefinition": 25,
+      "profession": "Carpenter"
+    },
+    {
+      "idDefinition": 4,
+      "indexDefinition": 26,
+      "profession": "Corrector"
+    },
+    {
+      "idDefinition": 1,
+      "indexDefinition": 27,
+      "profession": "Typewriter"
+    },
+    {
+      "idDefinition": 2,
+      "indexDefinition": 28,
+      "profession": "Programmer"
+    },
+    {
+      "idDefinition": 4,
+      "indexDefinition": 29,
+      "profession": "Accountant"
+    },
+    {
+      "idDefinition": 7,
+      "indexDefinition": 29,
+      "profession": "Accountant"
+    }
+  ]
+}

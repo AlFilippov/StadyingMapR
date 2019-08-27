@@ -7,6 +7,7 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,10 +26,23 @@ import com.alphilippov.studyingmap.network.dto.ProfessionDataListDTO;
 import com.alphilippov.studyingmap.network.dto.ProfessionOnePartDTO;
 import com.alphilippov.studyingmap.network.dto.ProfessionTwoPartDTO;
 import com.alphilippov.studyingmap.utils.AppConfig;
+import com.alphilippov.studyingmap.utils.CompositionJSON;
+import com.alphilippov.studyingmap.utils.ParseJSONFile;
 
+import org.json.JSONObject;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import okhttp3.OkHttpClient;
@@ -68,7 +82,11 @@ public class ProfessionDefinition extends Fragment {
         super.onCreate(savedInstanceState);
         initializeObjectProfession();
         loadDataAboutProfession(0);
-
+        CompositionJSON compositionJSON = new CompositionJSON();
+        JSONObject jsonObjectSecond = compositionJSON.createJSONObject(ProfessionOnePart, "professionOnePart");
+        saveFile(jsonObjectSecond,"partOne.json");
+        ParseJSONFile parseJSONFile = new ParseJSONFile(getContext());
+        parseJSONFile.parseJSONFile()
     }
 
     @Override
@@ -81,7 +99,6 @@ public class ProfessionDefinition extends Fragment {
 //        if(savedState!=null)
 //        super.onResume();
 //    }
-
 
 
     @Nullable
@@ -113,33 +130,33 @@ public class ProfessionDefinition extends Fragment {
 //
 //        }
 
-            mOnePartButton.setOnClickListener(view -> {
+        mOnePartButton.setOnClickListener(view -> {
 
-                if (QuestionCount == 1) {
-                    collectList(ProfessionOnePart, 0);
-                }
+            if (QuestionCount == 1) {
+                collectList(ProfessionOnePart, 0);
+            }
 
-                collectList(ProfessionOnePart, QuestionCount);
-                mOnePartButton.setText(setItemListOnePart(ProfessionOnePart, QuestionCount));
-                mTwoPartButton.setText(setItemListTwoPart(ProfessionTwoPart, QuestionCount));
-                QuestionCount++;
-                countView(QuestionCount);
+            collectList(ProfessionOnePart, QuestionCount);
+            mOnePartButton.setText(setItemListOnePart(ProfessionOnePart, QuestionCount));
+            mTwoPartButton.setText(setItemListTwoPart(ProfessionTwoPart, QuestionCount));
+            QuestionCount++;
+            countView(QuestionCount);
 
-            });
+        });
 
 
-            mTwoPartButton.setOnClickListener(view -> {
-                if (QuestionCount == 1) {
-                    collectList(ProfessionTwoPart, 0);
-                }
+        mTwoPartButton.setOnClickListener(view -> {
+            if (QuestionCount == 1) {
+                collectList(ProfessionTwoPart, 0);
+            }
 
-                collectList(ProfessionTwoPart, QuestionCount);
-                mOnePartButton.setText(setItemListOnePart(ProfessionOnePart, QuestionCount));
-                mTwoPartButton.setText(setItemListTwoPart(ProfessionTwoPart, QuestionCount));
-                QuestionCount++;
+            collectList(ProfessionTwoPart, QuestionCount);
+            mOnePartButton.setText(setItemListOnePart(ProfessionOnePart, QuestionCount));
+            mTwoPartButton.setText(setItemListTwoPart(ProfessionTwoPart, QuestionCount));
+            QuestionCount++;
 
-                countView(QuestionCount);
-            });
+            countView(QuestionCount);
+        });
 
         return binding.getRoot();
     }
@@ -287,7 +304,7 @@ public class ProfessionDefinition extends Fragment {
 
     private void countView(int name) {
         String s = String.valueOf(name);
-     mCountQue.setText(s);
+        mCountQue.setText(s);
     }
 
     private void collectInteresGroups() {
@@ -348,6 +365,19 @@ public class ProfessionDefinition extends Fragment {
         if (LowInterestBefore.size() != 0)
             LowInterest.addAll(LowInterestBefore);
 
+    }
+
+
+    public void saveFile(JSONObject jsonObject,String nameFile) {
+
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(Objects.requireNonNull(getContext()).
+                    openFileOutput(nameFile, Context.MODE_PRIVATE));
+            outputStreamWriter.write(jsonObject.toString());
+            outputStreamWriter.close();
+        } catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
     }
 
 
