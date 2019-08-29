@@ -2,6 +2,7 @@ package com.alphilippov.studyingmap.presenter;
 
 import com.alphilippov.studyingmap.helperclasses.DistributionInterests;
 import com.alphilippov.studyingmap.helperclasses.ProfessionalDefinition;
+import com.alphilippov.studyingmap.model.DataProfessionModel;
 import com.alphilippov.studyingmap.network.UdemyApi;
 import com.alphilippov.studyingmap.view.ProfessionDefinitionView;
 
@@ -22,6 +23,7 @@ public class ProfessionDefinitionPresenter extends MvpPresenter<ProfessionDefini
     private List<ProfessionalDefinition> sumResponseUsers = new ArrayList<>();
     private HashMap<String, List<String>> mInterest = new HashMap<>();
     private DistributionInterests distributionInterests;
+    private DataProfessionModel dataProfessionModel;
 
     public ProfessionDefinitionPresenter(UdemyApi udemyApi) {
         this.udemyApi = udemyApi;
@@ -32,6 +34,10 @@ public class ProfessionDefinitionPresenter extends MvpPresenter<ProfessionDefini
         if (click && count <= onePartProfession.size()) {
             setTextOnePartButton();
             setTextTwoPartButton();
+
+            dataProfessionModel.insertProfession();
+
+
             getViewState().setCountTextQuestion(String.valueOf(count));
             count++;
         } else {

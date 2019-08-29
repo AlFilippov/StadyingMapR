@@ -35,7 +35,8 @@ public class UdemyApi implements UdemyApiIn {
     }
 
     @Override
-    public Call<UserModelDto> getResult(int page, int page_size, String search, String price, boolean aff, String lang, String level, String order, int ratings) {
+    public Call<UserModelDto> getResult(int page, int page_size, String search, String price,
+                                        boolean aff, String lang, String level, String order, int ratings) {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(JacksonConverterFactory.create())
                 .baseUrl(AppConfig.BASE_URL)

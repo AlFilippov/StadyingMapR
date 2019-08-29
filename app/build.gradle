@@ -57,5 +57,8 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.6.1'
     //Custom Button
     implementation 'info.hoang8f:fbutton:1.0.5'
+    //Room
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
 
 }

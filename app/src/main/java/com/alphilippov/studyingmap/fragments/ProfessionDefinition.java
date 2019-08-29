@@ -2,8 +2,11 @@ package com.alphilippov.studyingmap.fragments;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,15 +17,17 @@ import com.alphilippov.studyingmap.databinding.ProfessionDefinitionBinding;
 import com.alphilippov.studyingmap.network.UdemyApi;
 import com.alphilippov.studyingmap.presenter.ProfessionDefinitionPresenter;
 import com.alphilippov.studyingmap.view.ProfessionDefinitionView;
-import com.arellomobile.mvp.MvpAppCompatActivity;
-import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.arellomobile.mvp.presenter.ProvidePresenter;
+
+import moxy.MvpAppCompatFragment;
+import moxy.presenter.InjectPresenter;
+import moxy.presenter.ProvidePresenter;
 
 
-public class ProfessionDefinition extends MvpAppCompatActivity implements ProfessionDefinitionView, View.OnClickListener {
+public class ProfessionDefinition extends MvpAppCompatFragment implements ProfessionDefinitionView, View.OnClickListener {
 
     private TextView mCountQue;
     private UdemyApi udemyApi;
+    private ProfessionDefinitionBinding mProfessionDefBinding;
     @InjectPresenter
     ProfessionDefinitionPresenter professionDefinitionPresenter;
 
@@ -31,11 +36,11 @@ public class ProfessionDefinition extends MvpAppCompatActivity implements Profes
         return new ProfessionDefinitionPresenter(udemyApi);
     }
 
+    @Nullable
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ProfessionDefinitionBinding binding = DataBindingUtil.setContentView(this, R.layout.profession_definition);
-        binding.setProfessionalDefinitionDB(new ProfessionBinding(
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mProfessionDefBinding = DataBindingUtil.inflate(inflater, R.layout.profession_definition, container, false);
+        mProfessionDefBinding.setProfessionalDefinitionDB(new ProfessionBinding(
                 "Choose one of the two",
                 "Question",
                 "Mechanic",
@@ -43,11 +48,18 @@ public class ProfessionDefinition extends MvpAppCompatActivity implements Profes
                 " 1 ",
                 " of ",
                 " 31 "));
-        mCountQue = binding.countQuestionTwoPart;
-        Button mOnePartButton = binding.OnePartButton;
-        Button mTwoPartButton = binding.TwoPartButton;
+        mCountQue = mProfessionDefBinding.countQuestionTwoPart;
+        Button mOnePartButton = mProfessionDefBinding.OnePartButton;
+        Button mTwoPartButton = mProfessionDefBinding.TwoPartButton;
         mOnePartButton.setOnClickListener(this);
         mTwoPartButton.setOnClickListener(this);
+        return mProfessionDefBinding.getRoot();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
         professionDefinitionPresenter.initializeObjectProfession();
     }
 
@@ -81,7 +93,7 @@ public class ProfessionDefinition extends MvpAppCompatActivity implements Profes
 
     @Override
     public void showToastQuestionEnded() {
-        Toast.makeText(this, "Thank you for your patience", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Thank you for  your patience", Toast.LENGTH_SHORT).show();
     }
 
     @Override
