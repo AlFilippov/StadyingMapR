@@ -22,6 +22,7 @@ import com.alphilippov.studyingmap.helperclasses.ProfessionalDefinition;
 import com.alphilippov.studyingmap.network.RestService;
 import com.alphilippov.studyingmap.network.dto.GetProfessionDTO;
 import com.alphilippov.studyingmap.network.dto.ProfessionDataListDTO;
+import com.alphilippov.studyingmap.presenter.ProfessionDefinitionPresenter;
 import com.alphilippov.studyingmap.utils.AppConfig;
 
 import org.json.JSONObject;
@@ -34,6 +35,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import moxy.presenter.InjectPresenter;
+import moxy.presenter.ProvidePresenter;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -66,12 +69,18 @@ public class ProfessionDefinition extends Fragment {
     private Bundle savedState = null;
     private Parcelable mListState;
 
+    @InjectPresenter
+    ProfessionDefinitionPresenter professionDefinitionPresenter;
+    @ProvidePresenter
+    ProfessionDefinitionPresenter provideRepoPresenter(){
+        // return context
+    };
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initializeObjectProfession();
         loadDataAboutProfession(0);
-        String pathdatabase=getContext().getDatabasePath("professiondata").getAbsolutePath();
+        String pathdatabase = getContext().getDatabasePath("professiondata").getAbsolutePath();
     }
 
     @Override
@@ -383,9 +392,6 @@ public class ProfessionDefinition extends Fragment {
         super.onAttach(context);
         mSentDataFragment = (sentDataFragment) context;
     }
-
-
-
 
 
 }
