@@ -6,7 +6,6 @@ import com.alphilippov.studyingmap.model.DataProfessionModel;
 import com.alphilippov.studyingmap.network.UdemyApi;
 import com.alphilippov.studyingmap.view.ProfessionDefinitionView;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

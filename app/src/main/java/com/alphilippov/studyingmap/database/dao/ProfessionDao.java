@@ -13,11 +13,14 @@ import java.util.List;
 @Dao
 public interface ProfessionDao {
     @Query("SELECT * FROM ProfessionEntity")
-List<ProfessionEntity> getAll() ;
+    List<ProfessionEntity> getAll();
+
     @Insert
     void insert(ProfessionEntity professionEntity);
+
     @Update
     void update(ProfessionEntity professionEntity);
+
     @Delete
     void delete(ProfessionEntity professionEntity);
 }
