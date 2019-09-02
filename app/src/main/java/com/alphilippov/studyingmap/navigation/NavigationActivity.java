@@ -11,13 +11,13 @@ import com.alphilippov.studyingmap.R;
 import com.alphilippov.studyingmap.fragments.FormCoursesKeyWords;
 import com.alphilippov.studyingmap.fragments.ResultsAfterSearchKeyWords;
 import com.alphilippov.studyingmap.fragments.VariantLearningCourses;
-import com.alphilippov.studyingmap.fragments.ProfessionDefinition;
-import com.alphilippov.studyingmap.fragments.SearchResultOfCourses;
+import com.alphilippov.studyingmap.fragments.ProfessionDefinitionFragment;
+import com.alphilippov.studyingmap.fragments.SearchResultOfCoursesFragment;
 import com.alphilippov.studyingmap.utils.AppConfig;
 
 import java.util.HashMap;
 
-public class NavigationActivity extends AppCompatActivity implements VariantLearningCourses.OnChangedFragment, ProfessionDefinition.sentDataFragment, FormCoursesKeyWords.replaceFragment {
+public class NavigationActivity extends AppCompatActivity implements VariantLearningCourses.OnChangedFragment, ProfessionDefinitionFragment.sentDataFragment, FormCoursesKeyWords.replaceFragment {
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = item -> {
         switch (item.getItemId()) {
@@ -54,8 +54,8 @@ public class NavigationActivity extends AppCompatActivity implements VariantLear
             FormCoursesKeyWords formCoursesKeyWords = new FormCoursesKeyWords();
             getBackStackandReplace(formCoursesKeyWords);
         } else if (s.equals(AppConfig.ChangeFragment.PROFESSION_DEFINITION)) {
-            ProfessionDefinition professionDefinition = new ProfessionDefinition();
-            getBackStackandReplace(professionDefinition);
+            ProfessionDefinitionFragment professionDefinitionFragment = new ProfessionDefinitionFragment();
+            getBackStackandReplace(professionDefinitionFragment);
         }
     }
 
@@ -64,10 +64,10 @@ public class NavigationActivity extends AppCompatActivity implements VariantLear
     public void onSentData(String d, HashMap hashMap) {
         if (d.equals(AppConfig.ChangeFragment.SEARCH_RESULT_OF_COURSES)) {
             Bundle bundle = new Bundle();
-            SearchResultOfCourses searchResultOfCourses = new SearchResultOfCourses();
+            SearchResultOfCoursesFragment searchResultOfCoursesFragment = new SearchResultOfCoursesFragment();
             bundle.putSerializable("result", hashMap);
-            searchResultOfCourses.setArguments(bundle);
-            getBackStackandReplace(searchResultOfCourses);
+            searchResultOfCoursesFragment.setArguments(bundle);
+            getBackStackandReplace(searchResultOfCoursesFragment);
 
         }
     }

@@ -1,50 +1,53 @@
 package com.alphilippov.studyingmap.presenter;
 
 import com.alphilippov.studyingmap.helperclasses.DistributionInterests;
+import com.alphilippov.studyingmap.helperclasses.HumanInterest;
 import com.alphilippov.studyingmap.helperclasses.ProfessionalDefinition;
 import com.alphilippov.studyingmap.model.DataProfessionModel;
 import com.alphilippov.studyingmap.network.UdemyApi;
+import com.alphilippov.studyingmap.utils.AppConfig;
 import com.alphilippov.studyingmap.view.ProfessionDefinitionView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import moxy.InjectViewState;
 import moxy.MvpPresenter;
 
 @InjectViewState
 public class ProfessionDefinitionPresenter extends MvpPresenter<ProfessionDefinitionView> {
-    private UdemyApi udemyApi;
-    private int count = 1;
-    private List<ProfessionalDefinition> onePartProfession = new ArrayList<>();
-    private List<ProfessionalDefinition> twoPartProfession = new ArrayList<>();
-    private List<ProfessionalDefinition> sumResponseUsers = new ArrayList<>();
+    private UdemyApi mUdemyApi;
+    private int mCount = 1;
+    private List<ProfessionalDefinition> mOnePartProfession = new ArrayList<>();
+    private List<ProfessionalDefinition> mTwoPartProfession = new ArrayList<>();
+    private List<ProfessionalDefinition> mSumResponseUsers = new ArrayList<>();
     private HashMap<String, List<String>> mInterest = new HashMap<>();
-    private DistributionInterests distributionInterests;
-    private DataProfessionModel dataProfessionModel;
+    private DistributionInterests mDistributionInterests;
+    private DataProfessionModel mDataProfessionModel;
 
     public ProfessionDefinitionPresenter(UdemyApi udemyApi) {
-        this.udemyApi = udemyApi;
+        this.mUdemyApi = udemyApi;
     }
 
 
     public void isClickedGeneral(boolean click) {
-        if (click && count <= onePartProfession.size()) {
+        if (click && mCount <= mOnePartProfession.size()) {
             setTextOnePartButton();
             setTextTwoPartButton();
 
-            dataProfessionModel.insertProfession();
+            mDataProfessionModel.insertProfession();
 
 
-            getViewState().setCountTextQuestion(String.valueOf(count));
-            count++;
+            getViewState().setCountTextQuestion(String.valueOf(mCount));
+            mCount++;
         } else {
             /*
             Тут могу словить ексепшн
              */
-            loadChoiceinData(sumResponseUsers);
-            mInterest.putAll(distributionInterests.collectInteresGroups());
+            loadChoiceinData(mSumResponseUsers);
+            mInterest.putAll(mDistributionInterests.collectInteresGroups());
             getViewState().showToastQuestionEnded();
         }
     }
@@ -52,19 +55,19 @@ public class ProfessionDefinitionPresenter extends MvpPresenter<ProfessionDefini
 
     public void isClickedButtons(boolean clickButton) {
         if (clickButton) {
-            fixChoiceQuestion(onePartProfession, count);
+            fixChoiceQuestion(mOnePartProfession, mCount);
         } else {
-            fixChoiceQuestion(twoPartProfession, count);
+            fixChoiceQuestion(mTwoPartProfession, mCount);
         }
     }
 
 
     private void setTextOnePartButton() {
-        getViewState().setTextOnePartButton(setTextProfession(onePartProfession, count));
+        getViewState().setTextOnePartButton(setTextProfession(mOnePartProfession, mCount));
     }
 
     private void setTextTwoPartButton() {
-        getViewState().setTextTwoPartButton(setTextProfession(twoPartProfession, count));
+        getViewState().setTextTwoPartButton(setTextProfession(mTwoPartProfession, mCount));
 
     }
 
@@ -73,15 +76,15 @@ public class ProfessionDefinitionPresenter extends MvpPresenter<ProfessionDefini
     }
 
     private List<ProfessionalDefinition> fixChoiceQuestion(List<ProfessionalDefinition> results, int i) {
-        sumResponseUsers.add(results.get(i));
-        return sumResponseUsers;
+       mSumResponseUsers.add(results.get(i));
+        return mSumResponseUsers;
     }
 
     private void loadChoiceinData(List<ProfessionalDefinition> dataProfession) {
-        distributionInterests = new DistributionInterests(dataProfession);
+        mDistributionInterests = new DistributionInterests(dataProfession);
 
     }
-
+/*
     public void initializeObjectProfession() {
         onePartProfession.add(new ProfessionalDefinition(1, 0, "Mechanic"));
         onePartProfession.add(new ProfessionalDefinition(2, 1, "Information security specialist"));
@@ -148,4 +151,6 @@ public class ProfessionDefinitionPresenter extends MvpPresenter<ProfessionDefini
         twoPartProfession.add(new ProfessionalDefinition(6, 29, "Literary translator"));
         twoPartProfession.add(new ProfessionalDefinition(7, 29, "Literary translator"));
     }
+*/
+
 }

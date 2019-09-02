@@ -42,7 +42,7 @@ public class AppApplication extends Application {
 
         final File dbPath = context.getDatabasePath(databaseName);
 
-        // If the database already exists, return
+
         if (dbPath.exists()) {
             return;
         }

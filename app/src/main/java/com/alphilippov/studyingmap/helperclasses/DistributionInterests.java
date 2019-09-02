@@ -1,10 +1,8 @@
 package com.alphilippov.studyingmap.helperclasses;
 
-import com.alphilippov.studyingmap.fragments.ProfessionDefinition;
 import com.alphilippov.studyingmap.utils.AppConfig;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,29 +11,29 @@ public class DistributionInterests {
     private static final String HIGH_INT_KEY = "high";
     private static final String MIDDLE_INT_KEY = "middle";
     private static final String LOW_INT_KEY = "low";
-    private List<ProfessionalDefinition> professionalDefinitions;
+    private List<ProfessionalDefinition> mProfessionalDefinitions;
     private HashMap<String, List<String>> mHashInterest = new HashMap<>();
-    private List<String> HighInterest = new ArrayList<>();
-    private List<String> MiddleInterest = new ArrayList<>();
-    private List<String> LowInterest = new ArrayList<>();
-    private List<String> HighIntGroup = new ArrayList<>();
-    private List<String> MiddleIntGroup = new ArrayList<>();
-    private List<String> LowIntGroup = new ArrayList<>();
-    private List<String> HighInterestBefore = new ArrayList<>();
-    private List<String> MiddleInterestBefore = new ArrayList<>();
-    private List<String> LowInterestBefore = new ArrayList<>();
+    private List<String> mHighInterest = new ArrayList<>();
+    private List<String> mMiddleInterest = new ArrayList<>();
+    private List<String> mLowInterest = new ArrayList<>();
+    private List<String> mHighIntGroup = new ArrayList<>();
+    private List<String> mMiddleIntGroup = new ArrayList<>();
+    private List<String> mLowIntGroup = new ArrayList<>();
+    private List<String> mHighInterestBefore = new ArrayList<>();
+    private List<String> mMiddleInterestBefore = new ArrayList<>();
+    private List<String> mLowInterestBefore = new ArrayList<>();
 
     public DistributionInterests(List<ProfessionalDefinition> professionalDefinitions) {
-        this.professionalDefinitions = professionalDefinitions;
+        this.mProfessionalDefinitions = professionalDefinitions;
     }
 
     public HashMap<String, List<String>> collectInteresGroups() {
-        int realist = (int) professionalDefinitions.stream().filter((p) -> p.getIdDefiniton() == AppConfig.Group.REALIST).count();
-        int intellectual = (int) professionalDefinitions.stream().filter((p) -> p.getIdDefiniton() == AppConfig.Group.INTELLECTUAL).count();
-        int social = (int) professionalDefinitions.stream().filter((p) -> p.getIdDefiniton() == AppConfig.Group.SOCIAL).count();
-        int office = (int) professionalDefinitions.stream().filter((p) -> p.getIdDefiniton() == AppConfig.Group.OFFICE).count();
-        int entrepreneurial = (int) professionalDefinitions.stream().filter((p) -> p.getIdDefiniton() == AppConfig.Group.ENTREPRENEURIAL).count();
-        int artistic = (int) professionalDefinitions.stream().filter((p) -> p.getIdDefiniton() == AppConfig.Group.ARTISTIC).count();
+        int realist = (int) mProfessionalDefinitions.stream().filter((p) -> p.getIdDefiniton() == AppConfig.Group.REALIST).count();
+        int intellectual = (int) mProfessionalDefinitions.stream().filter((p) -> p.getIdDefiniton() == AppConfig.Group.INTELLECTUAL).count();
+        int social = (int) mProfessionalDefinitions.stream().filter((p) -> p.getIdDefiniton() == AppConfig.Group.SOCIAL).count();
+        int office = (int)mProfessionalDefinitions.stream().filter((p) -> p.getIdDefiniton() == AppConfig.Group.OFFICE).count();
+        int entrepreneurial = (int) mProfessionalDefinitions.stream().filter((p) -> p.getIdDefiniton() == AppConfig.Group.ENTREPRENEURIAL).count();
+        int artistic = (int) mProfessionalDefinitions.stream().filter((p) -> p.getIdDefiniton() == AppConfig.Group.ARTISTIC).count();
         HumanInterest mHigh = new HumanInterest(8, 10, "High");
         HumanInterest mMiddle = new HumanInterest(5, 7, "Middle");
         HumanInterest mLow = new HumanInterest(0, 4, "Low");
@@ -46,27 +44,27 @@ public class DistributionInterests {
 
         for (int i = 0; i <= arr.length - 1; i++) {
             if (inGroup(mHigh.getLowInterest(), mHigh.getHighInterest(), arr[i])) {
-                collectInterestHigh(arrays[i], HighInterestBefore);
-                HighIntGroup.add(mNameGroupInteres[i]);
+                collectInterestHigh(arrays[i], mHighInterestBefore);
+                mHighIntGroup.add(mNameGroupInteres[i]);
             } else if (inGroup(mMiddle.getLowInterest(), mMiddle.getHighInterest(), arr[i])) {
-                collectInterestMiddle(arrays[i], MiddleInterestBefore);
-                MiddleIntGroup.add(mNameGroupInteres[i]);
+                collectInterestMiddle(arrays[i], mMiddleInterestBefore);
+                mMiddleIntGroup.add(mNameGroupInteres[i]);
             } else if (inGroup(mLow.getLowInterest(), mLow.getHighInterest(), arr[i])) {
-                collectInterestLow(arrays[i], LowInterestBefore);
-                LowIntGroup.add(mNameGroupInteres[i]);
+                collectInterestLow(arrays[i], mLowInterestBefore);
+                mLowIntGroup.add(mNameGroupInteres[i]);
             }
         }
-        createHashMapIntGroup(HIGH_INT_KEY, HighIntGroup);
-        createHashMapIntGroup(MIDDLE_INT_KEY, MiddleIntGroup);
-        createHashMapIntGroup(LOW_INT_KEY, LowIntGroup);
+        createHashMapIntGroup(HIGH_INT_KEY, mHighIntGroup);
+        createHashMapIntGroup(MIDDLE_INT_KEY, mMiddleIntGroup);
+        createHashMapIntGroup(LOW_INT_KEY, mLowIntGroup);
         return mHashInterest;
     }
 
     private void collectInterestHigh(int group, List<String> name) {
-        HighInterestBefore = professionalDefinitions.stream().filter((p) -> p.getIdDefiniton() == group).
+        mHighInterestBefore = mProfessionalDefinitions.stream().filter((p) -> p.getIdDefiniton() == group).
                 map(ProfessionalDefinition::getProfession).collect(Collectors.toList());
-        if (HighInterestBefore.size() != 0)
-            HighInterest.addAll(HighInterestBefore);
+        if (mHighInterestBefore.size() != 0)
+            mHighInterest.addAll(mHighInterestBefore);
 
     }
 
@@ -75,18 +73,18 @@ public class DistributionInterests {
     }
 
     private void collectInterestMiddle(int group, List<String> name) {
-        MiddleInterestBefore = professionalDefinitions.stream().filter((p) -> p.getIdDefiniton() == group).
+       mMiddleInterestBefore = mProfessionalDefinitions.stream().filter((p) -> p.getIdDefiniton() == group).
                 map(ProfessionalDefinition::getProfession).collect(Collectors.toList());
-        if (MiddleInterestBefore.size() != 0)
-            MiddleInterest.addAll(MiddleInterestBefore);
+        if (mMiddleInterestBefore.size() != 0)
+            mMiddleInterest.addAll(mMiddleInterestBefore);
 
     }
 
     private void collectInterestLow(int group, List<String> name) {
-        LowInterestBefore = professionalDefinitions.stream().filter((p) -> p.getIdDefiniton() == group).
+        mLowInterestBefore = mProfessionalDefinitions.stream().filter((p) -> p.getIdDefiniton() == group).
                 map(ProfessionalDefinition::getProfession).collect(Collectors.toList());
-        if (LowInterestBefore.size() != 0)
-            LowInterest.addAll(LowInterestBefore);
+        if (mLowInterestBefore.size() != 0)
+            mLowInterest.addAll(mLowInterestBefore);
 
     }
 
