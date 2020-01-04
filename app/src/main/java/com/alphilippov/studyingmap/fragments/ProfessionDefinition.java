@@ -1,19 +1,18 @@
 package com.alphilippov.studyingmap.fragments;
 
 import android.content.Context;
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alphilippov.studyingmap.R;
 import com.alphilippov.studyingmap.databind.ProfessionBinding;
@@ -23,22 +22,14 @@ import com.alphilippov.studyingmap.helperclasses.ProfessionalDefinition;
 import com.alphilippov.studyingmap.network.RestService;
 import com.alphilippov.studyingmap.network.dto.GetProfessionDTO;
 import com.alphilippov.studyingmap.network.dto.ProfessionDataListDTO;
-import com.alphilippov.studyingmap.network.dto.ProfessionOnePartDTO;
-import com.alphilippov.studyingmap.network.dto.ProfessionTwoPartDTO;
 import com.alphilippov.studyingmap.utils.AppConfig;
 import com.alphilippov.studyingmap.utils.CompositionJSON;
 import com.alphilippov.studyingmap.utils.ParseJSONFile;
 
 import org.json.JSONObject;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

@@ -12,15 +12,14 @@ import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Build;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 
 import info.hoang8f.fbutton.R;
 
-public class FButton extends android.support.v7.widget.AppCompatButton implements View.OnTouchListener {
+public class FButton extends androidx.appcompat.widget.AppCompatButton implements View.OnTouchListener {
 
     //Custom values
     private boolean isShadowEnabled = true;
