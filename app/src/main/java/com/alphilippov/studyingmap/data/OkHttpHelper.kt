@@ -1,6 +1,6 @@
 package com.alphilippov.studyingmap.data
 
-import com.alphilippov.studyingmap.utils.DependenciesFactory.getBasicAuthenticator
+import com.alphilippov.studyingmap.utils.ConstVal.getBasicAuthenticator
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import okhttp3.Interceptor

@@ -23,20 +23,18 @@ android {
     }
     productFlavors {
         dev {
-            buildConfigField "String", "END_POINT_BACKEND", "\"https://api.the-odds-api.com/\""
-            buildConfigField "String", "KEY_POINT", "\"d711417db5ee39a54b4f2a264caa3f54\""
-            buildConfigField "String", "END_POINT_STORE", "\"http://securitykeeperapp.com/\""
-            buildConfigField "String", "END_POINT_IP", "\"https://api.ipify.org/\""
-            buildConfigField "String", "END_POINT_IP_JSON", "\"https://api.ipify.org/?format=json\""
+
+            buildConfigField "String", "UDEMY_ID", "\"lL0XU8iNzCRb3pVLcsFllZUQsmENxw0605cs7E7U\""
+            buildConfigField "String", "UDEMY_SECRET", "\"5j7Z5ETzYUblaHnrPQo9E1A9doFN9ldvDtA83iU8RrTJMgnJTnZloVyzFyhOuLkZFy5C5qJnbCzYQGEsD6niDrA4uYs2i28TUKmviXjJzTGbudBwhQjJXEFckWFBXY9D\""
+            buildConfigField "String", "UDEMY_API", "\"https://www.udemy.com/api-2.0/\""
+
 
 
         }
         prod {
-            buildConfigField "String", "END_POINT_BACKEND", "\"https://api.the-odds-api.com/\""
-            buildConfigField "String", "KEY_POINT", "\"d711417db5ee39a54b4f2a264caa3f54\""
-            buildConfigField "String", "END_POINT_STORE", "\"http://securitykeeperapp.com/\""
-            buildConfigField "String", "END_POINT_IP", "\"https://api.ipify.org/\""
-            buildConfigField "String", "END_POINT_IP_JSON", "\"https://api.ipify.org/?format=json\""
+            buildConfigField "String", "UDEMY_ID", "\"lL0XU8iNzCRb3pVLcsFllZUQsmENxw0605cs7E7U\""
+            buildConfigField "String", "UDEMY_SECRET", "\"5j7Z5ETzYUblaHnrPQo9E1A9doFN9ldvDtA83iU8RrTJMgnJTnZloVyzFyhOuLkZFy5C5qJnbCzYQGEsD6niDrA4uYs2i28TUKmviXjJzTGbudBwhQjJXEFckWFBXY9D\""
+            buildConfigField "String", "UDEMY_API", "\"https://www.udemy.com/api-2.0/\""
         }
 
     }

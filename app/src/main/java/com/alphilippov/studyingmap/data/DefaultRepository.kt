@@ -1,22 +1,13 @@
 package com.alphilippov.studyingmap.data
 
 
-import com.alphilippov.studyingmap.data.model.FootballHockey
+import com.alphilippov.studyingmap.data.model.CoursesData
 import io.reactivex.Single
 
 class DefaultRepository(
         private val networkRepository: NetworkRepository
 
-        ) : Repository {
-    override fun getBets(
-        apiKey: String,
-        sport: String,
-        region: String,
-        mkt: String
-    ): Single<FootballHockey> =
-        networkRepository.getBets(apiKey, sport, region, mkt)
-
-
-
-
+) : Repository {
+    override fun getCourses(page: Int, page_size: Int, search: String, price: String, aff: Boolean, lang: String, level: String, order: String, ratings: Int): Single<CoursesData>
+            = networkRepository.getCourses(page, page_size, search, price, aff, lang, level, order, ratings)
 }

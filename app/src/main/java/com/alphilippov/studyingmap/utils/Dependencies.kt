@@ -1,11 +1,10 @@
+package com.alphilippov.studyingmap.utils
 
-
-import Dependencies.Companion.repository
-import Dependencies.Companion.schedulers
+import com.alphilippov.studyingmap.utils.Dependencies.Companion.repository
+import com.alphilippov.studyingmap.utils.Dependencies.Companion.schedulers
 import android.app.Application
 import android.content.Context
 import com.alphilippov.studyingmap.data.Repository
-import com.alphilippov.studyingmap.utils.Schedulers
 import java.lang.IllegalStateException
 
 data class Dependencies(

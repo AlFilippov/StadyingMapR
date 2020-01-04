@@ -11,7 +11,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.alphilippov.studyingmap.R;
-import com.alphilippov.studyingmap.network.dto.UserModelDto;
+import com.alphilippov.studyingmap.network.UserModelDto;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 

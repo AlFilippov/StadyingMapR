@@ -8,8 +8,6 @@ import com.alphilippov.studyingmap.data.DataApi
 import com.alphilippov.studyingmap.data.DefaultRepository
 import com.alphilippov.studyingmap.data.OkHttpHelper
 import com.alphilippov.studyingmap.data.Repository
-import com.google.common.io.BaseEncoding
-
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -25,13 +23,11 @@ object DependenciesFactory {
 
     }
 
-    fun getBasicAuthenticator(): String {
-        return BaseEncoding.base64().encode((BuildConfig.END_POINT_BACKEND + ":" + BuildConfig.END_POINT_IP_JSON).toByteArray())
-    }
+
 
     private fun createRetrofit(schedulers: Schedulers) =
             Retrofit.Builder()
-                    .baseUrl(BuildConfig.END_POINT_BACKEND)
+                    .baseUrl(BuildConfig.UDEMY_API)
                     .client(OkHttpHelper().createOkHttpClient())
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(schedulers.io()))

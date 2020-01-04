@@ -15,8 +15,7 @@ import android.widget.AbsListView;
 import android.widget.Toast;
 
 import com.alphilippov.studyingmap.R;
-import com.alphilippov.studyingmap.network.RestService;
-import com.alphilippov.studyingmap.network.dto.UserModelDto;
+import com.alphilippov.studyingmap.network.UserModelDto;
 import com.alphilippov.studyingmap.ui.DataAdapter;
 import com.alphilippov.studyingmap.ui.RecyclerViewClickListener;
 import com.alphilippov.studyingmap.ui.RecyclerViewTouchListener;
