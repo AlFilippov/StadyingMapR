@@ -6,10 +6,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="ContentAboutCourseDB"
-            type="com.alphilippov.studyingmap.databind.ContentAboutCourseBinding" />
+            type="com.alphilippov.studyingmapnew.databind.ContentAboutCourseBinding" />
 
         <variable
             name="CourseImage"
@@ -31,13 +30,13 @@
             android:id="@+id/image_content_about_course"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            app:CourseImage="@{CourseImage}" />
+        />
 
         <TextView
             android:id="@+id/title_content_about_course"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:text="@{ContentAboutCourseDB.titleCourse}"
+
             android:textAlignment="gravity"
             android:textAllCaps="false" />
 
@@ -54,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:numStars="5"
-                android:rating="@{ContentAboutCourseDB.ratingBarCourse}"
+
                 android:stepSize="0.1" />
 
             <TextView
@@ -63,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="10dp"
-                android:text="@{Integer.toString(ContentAboutCourseDB.numReviewsCourse).concat(@string/space).concat(ContentAboutCourseDB.nameReviewsCourse)}"
+
                 tools:text="667 оценок" />
 
 
@@ -72,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@{Integer.toString(ContentAboutCourseDB.numSubscribersCourse).concat(@string/space).concat(ContentAboutCourseDB.nameSubscribersCourse)}"
+
                 tools:text="2297 студентов зарегестрировано" />
         </LinearLayout>
 
@@ -81,7 +80,7 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="@{ContentAboutCourseDB.authorCourse}"
+
             android:textAlignment="gravity"
             android:textAllCaps="false"
             android:textStyle="italic"
@@ -100,39 +99,24 @@
                 android:id="@+id/price_content_about_course"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:text="@{Integer.toString(ContentAboutCourseDB.priceNumCourse).concat(@string/space).concat(ContentAboutCourseDB.priceSymbolCourse)}"
+
                 tools:text="11999 rub" />
 
             <TextView
                 android:id="@+id/price_discount_content_about_course"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:text="@{Integer.toString(ContentAboutCourseDB.discountNumCourse).concat(@string/space).concat(ContentAboutCourseDB.discountCourse)}"
+
                 tools:text="999 rub" />
 
             <TextView
                 android:id="@+id/discount_percent_about_course"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:text="@{ContentAboutCourseDB.discountCourse.concat(@string/space).concat(Integer.toString(ContentAboutCourseDB.discountNumCourse).concat(@string/space).concat(@string/percent))}"
+
                 tools:text="Discount 92 %" />
         </LinearLayout>
 
-        <com.alphilippov.studyingmap.widget.FButton
-            android:id="@+id/site_content_about_course"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:text="@{ContentAboutCourseDB.buttonSite}"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textStyle="italic"
-            app:onClickListener="@{onClick}"
-            fbutton:buttonColor="@color/fbutton_color_peter_river"
-            fbutton:cornerRadius="5dp"
-            fbutton:shadowEnabled="true"
-            fbutton:shadowHeight="5dp"
-            tools:text="Site" />
+
     </LinearLayout>
 </layout>

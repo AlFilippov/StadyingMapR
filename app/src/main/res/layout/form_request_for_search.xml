@@ -15,7 +15,7 @@
         android:textAllCaps="false"
         android:textSize="20sp"
         android:textStyle="italic"
-        android:textColor="@color/black" />
+     />
 
     <EditText
         android:id="@+id/content_edit_text_request"
@@ -25,15 +25,5 @@
         android:layout_centerHorizontal="true"
         android:inputType="text" />
 
-    <com.alphilippov.studyingmap.widget.FButton
-        android:id="@+id/content_button_request"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/content_edit_text_request"
-        android:layout_centerHorizontal="true"
-        android:text="@string/content_button_request"
-        fbutton:buttonColor="@color/fbutton_color_peter_river"
-        fbutton:cornerRadius="5dp"
-        fbutton:shadowEnabled="true"
-        fbutton:shadowHeight="5dp" />
+
 </RelativeLayout>

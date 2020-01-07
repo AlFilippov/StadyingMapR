@@ -32,7 +32,7 @@
             android:layout_toRightOf="@id/mImageCourse"
             android:layout_marginLeft="10sp"
             android:textSize="12sp"
-            android:textColor="@color/colorPrimaryDark"
+
             android:text="@string/mAuthorCourse" />
 
         <RatingBar
@@ -73,5 +73,5 @@
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_marginTop="1dp"
-        android:background="@color/colorPrimary"/>
+       />
 </LinearLayout>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Studying Map R</string>
+    <string name="app_name">Studying Map Kotlin</string>
     <string name="yes">Да</string>
     <string name="No">Нет</string>
     <string name="askMe">Do you know what you want to know?</string>
@@ -25,4 +25,9 @@
     <string name="navigation_dashboard">Search</string>
     <string name="space">\u0020</string>
     <string name="percent">%</string>
+    <!-- FilterCoursesFragment-->
+    <string name="filter_fragment_price_paid">Платные</string>
+    <string name="filter_fragment_price_free">Бесплатные</string>
+    <string name="filter_fragment_language_ru">Русский</string>
+    <string name="filter_fragment_language_en">English</string>
 </resources>
