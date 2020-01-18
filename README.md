@@ -1,4 +1,6 @@
 # StadyingMapR
-Мой личный проект .
-Сейчас перестраиваю под MVP архитектуру.
+My Pet project
+MVP arch
+Kotlin
+RxJava2
 
